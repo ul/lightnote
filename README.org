@@ -1,0 +1,144 @@
+* WTF?
+
+Learning [[https://github.com/digego/extempore][Extempore]] while following [[https://www.lightnote.co/course/][LightNote]] music theory course.
+
+* Setup
+
+  To run examples you need Extempore's master branch HEAD compiled. Version 0.7
+  doesn't fit, because Extempore API is undergoing substantial change.
+
+  To follow the course you need access to [[https://app.lightnote.co/][app,]] could be purchased [[https://www.lightnote.co/course/?ref=sidebarpremium#buy][here.]]
+
+  If you are proficient with org-mode, you already know how it would best for
+  you to run examples. Otherwise you have two basic options:
+
+  1. Copy and paste code to buffer/editor from which you know how to send it to
+     Extempore compiler (see [[http://digego.github.io/extempore/index.html][documentation]]).
+  2. If you have Emacs installed then run =tangle.sh= to produce xtm files
+     and run code from them.
+
+* The Essential Guide to Music Theory
+
+** [[https://app.lightnote.co/sound][Sound]]
+
+   To produce sound in Extempore we need to setup xtlang callback:
+
+#+BEGIN_SRC extempore :exports none :noweb-ref set-dsp
+(dsp:set! dsp)
+#+END_SRC
+
+#+BEGIN_SRC extempore :tangle xtm/00-sound-silence.xtm :noweb yes :mkdirp yes :padline no
+(bind-func dsp:DSP
+  (lambda (in time chan dat)
+    0.0))
+<<set-dsp>>
+#+END_SRC
+
+   Note callback signature:
+
+   - in:SAMPLE :: sample from input device
+   - time:i64 :: sample number
+   - chan:i64 :: audio channel
+   - dat:SAMPLE* :: user data
+   - <return>:SAMPLE :: sample at given channel and time
+
+   sample value varies from -1.0 to 1.0
+
+   You can set dsp function once, but then redefine it as many times as your
+   want. Our first attempt produces silence, let's make it more audible:
+
+#+BEGIN_SRC extempore :tangle xtm/01-sound-sine.xtm :noweb yes :mkdirp yes :padline no
+  (bind-func dsp:DSP
+    (lambda (in time chan dat)
+      (let ((amplitude 0.5)
+            (frequency 440.0))
+        (* amplitude
+           (sin (* frequency
+                   (/ STWOPI SRf)
+                   (convert time)))))))
+  <<set-dsp>>
+#+END_SRC
+
+   =STWOPI= is /2pi of type SAMPLE/ constant, and =convert= allows us to make a
+   =SAMPLE= typed value from =time=. =SRf= refers to current sampling frequency.
+   Extempore uses symbiosis of two different languages with similar, LISPy,
+   syntax: Scheme and xtlang. Performance-sensitive parts (usually dsp) are
+   implemented in xtlang, and other stuff (usually control) is done in Scheme.
+   xtlang is very much like C but with LISP syntax and proper closures.
+
+   So far so good, we've obtained a basic form of sound — a sine wave.
+   Amplitude, or height of the wave (in case you are following graphics in
+   course), in our example is half of maximum available. =sin= ranges from -1.0
+   to 1.0 and we multiply it by 0.5. It affects sound loudness. Try to play with
+   it.
+
+   Frequency, or density of the wave, is perceived as a pitch. Play with it.
+
+*** MIDI controller
+
+    While the essence of live coding is performance created with code,
+    cyber-physical environment incorporates various media. Let's plug MIDI
+    controller and play with amplitude and frequency using it. For that purpose
+    we are going to load =midi_input= library:
+
+#+BEGIN_SRC extempore :exports none :noweb-ref midi-input
+(sys:load "libs/external/midi_input.xtm")
+#+END_SRC
+
+    It load a =portmidi= wrapper and tries to connect to the first midi device.
+    The latter fact is important because if you will try to connect to this
+    device again by =(set_midi_in 0)= you will get unhelpful error message
+    /Invalid device ID./
+
+    Look into console where you are running Extempore. =midi_input= calls
+    =(pm_print_devices)= on startup. If you MIDI controller is listed under the
+    index 0 then nothing to do. Otherwise execute (replace *3* with required index):
+
+#+BEGIN_SRC extempore :exports none :noweb-ref set-midi-in
+(set_midi_in 3)
+#+END_SRC
+
+
+    To make our =dsp= function controllable outside let's move =amplitude= and
+    =controller= outside of lambda:
+
+#+BEGIN_SRC extempore :exports none :noweb-ref sine-closure-dsp
+  (bind-func dsp:DSP
+    (let ((amplitude 0.5)
+          (frequency 440.0))
+      (lambda (in time chan dat)
+          (* amplitude
+             (sin (* frequency
+                     (/ STWOPI SRf)
+                     (convert time)))))))
+#+END_SRC
+
+    xtlang has a nice feature: closure environment is accessible outside using
+    dot-syntax, =(closure.variable:type)= as getter and =(closure.variable:type
+    value)= as setter. This feature is arguable from the point of view of
+    functional style leaning towards purity and referential transparency, but I
+    guess it provides good trade for performance.
+
+    To read values from controller we would override =midi_cc= function callback
+    provided by =midi_input= (replace *19* and *23* with your knobs CCs):
+
+#+BEGIN_SRC extempore :exports none :noweb-ref sine-midi-cc
+  (bind-func midi_cc
+    (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
+      (println "MIDI CC" controller value)
+      (cond ((= controller 19) (dsp.amplitude:SAMPLE (/ (convert value) 127.)))
+            ((= controller 23) (dsp.frequency:SAMPLE (* (convert value) 10.)))
+            (else 0.0:f))
+      void)))
+#+END_SRC
+
+    If you execute snippets one-by-one then you should have response already.
+    Otherwise here is entire file:
+
+#+BEGIN_SRC extempore :tangle xtm/02-sound-sine-midi.xtm :noweb yes :mkdirp yes :padline no
+<<midi-input>>
+<<sine-closure-dsp>>
+<<set-dsp>>
+;; <<set-midi-in>>
+<<sine-midi-cc>>
+#+END_SRC
