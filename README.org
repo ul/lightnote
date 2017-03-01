@@ -23,7 +23,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
    To produce sound in Extempore we need to setup xtlang callback:
 
-#+BEGIN_SRC extempore :exports none :noweb-ref set-dsp
+#+BEGIN_SRC extempore :noweb-ref set-dsp
 (dsp:set! dsp)
 #+END_SRC
 
@@ -81,7 +81,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     controller and play with amplitude and frequency using it. For that purpose
     we are going to load =midi_input= library:
 
-#+BEGIN_SRC extempore :exports none :noweb-ref midi-input
+#+BEGIN_SRC extempore :noweb-ref midi-input
 (sys:load "libs/external/midi_input.xtm")
 #+END_SRC
 
@@ -94,7 +94,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     =(pm_print_devices)= on startup. If you MIDI controller is listed under the
     index 0 then nothing to do. Otherwise execute (replace *3* with required index):
 
-#+BEGIN_SRC extempore :exports none :noweb-ref set-midi-in
+#+BEGIN_SRC extempore :noweb-ref set-midi-in
 (set_midi_in 3)
 #+END_SRC
 
@@ -102,7 +102,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     To make our =dsp= function controllable outside let's move =amplitude= and
     =controller= outside of lambda:
 
-#+BEGIN_SRC extempore :exports none :noweb-ref sine-closure-dsp
+#+BEGIN_SRC extempore :noweb-ref sine-closure-dsp
   (bind-func dsp:DSP
     (let ((amplitude 0.5)
           (frequency 440.0))
@@ -122,7 +122,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     To read values from controller we would override =midi_cc= function callback
     provided by =midi_input= (replace *19* and *23* with your knobs CCs):
 
-#+BEGIN_SRC extempore :exports none :noweb-ref sine-midi-cc
+#+BEGIN_SRC extempore :noweb-ref sine-midi-cc
   (bind-func midi_cc
     (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
       (println "MIDI CC" controller value)
