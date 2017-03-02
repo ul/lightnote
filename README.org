@@ -24,16 +24,18 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     To produce sound in Extempore we need to setup xtlang callback:
 
- #+BEGIN_SRC extempore :noweb-ref set-dsp
- (dsp:set! dsp)
- #+END_SRC
+#+NAME: set-dsp
+#+BEGIN_SRC extempore
+  (dsp:set! dsp)
+#+END_SRC
 
- #+BEGIN_SRC extempore :tangle xtm/00-sound-silence.xtm :noweb yes :mkdirp yes :padline no
- (bind-func dsp:DSP
-   (lambda (in time chan dat)
-     0.0))
- <<set-dsp>>
- #+END_SRC
+#+NAME: xtm/00-sound-silence.xtm
+#+BEGIN_SRC extempore :tangle xtm/00-sound-silence.xtm :noweb yes :mkdirp yes :padline no
+  (bind-func dsp:DSP
+    (lambda (in time chan dat)
+      0.0))
+  <<set-dsp>>
+#+END_SRC
 
     Note callback signature:
 
@@ -48,17 +50,18 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     You can set dsp function once, but then redefine it as many times as your
     want. Our first attempt produces silence, let's make it more audible:
 
- #+BEGIN_SRC extempore :tangle xtm/01-sound-sine.xtm :noweb yes :mkdirp yes :padline no
-   (bind-func dsp:DSP
-     (lambda (in time chan dat)
-       (let ((amplitude 0.5)
-             (frequency 440.0))
-         (* amplitude
-            (sin (* frequency
-                    (/ STWOPI SRf)
-                    (convert time)))))))
-   <<set-dsp>>
- #+END_SRC
+#+NAME: xtm/01-sound-sine.xtm
+#+BEGIN_SRC extempore :tangle xtm/01-sound-sine.xtm :noweb yes :mkdirp yes :padline no
+  (bind-func dsp:DSP
+    (lambda (in time chan dat)
+      (let ((amplitude 0.5)
+            (frequency 440.0))
+        (* amplitude
+           (sin (* frequency
+                   (/ STWOPI SRf)
+                   (convert time)))))))
+  <<set-dsp>>
+#+END_SRC
 
     =STWOPI= is /2pi of type SAMPLE/ constant, and =convert= allows us to make a
     =SAMPLE= typed value from =time=. =SRf= refers to current sampling frequency.
@@ -82,9 +85,10 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
      controller and play with amplitude and frequency using it. For that purpose
      we are going to load =midi_input= library:
 
- #+BEGIN_SRC extempore :noweb-ref load-midi-input
- (sys:load "libs/external/midi_input.xtm")
- #+END_SRC
+#+NAME: load-midi-input
+#+BEGIN_SRC extempore
+  (sys:load "libs/external/midi_input.xtm")
+#+END_SRC
 
      It load a =portmidi= wrapper and tries to connect to the first midi device.
      The latter fact is important because if you will try to connect to this
@@ -95,24 +99,25 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
      =(pm_print_devices)= on startup. If you MIDI controller is listed under the
      index 0 then nothing to do. Otherwise execute (replace *3* with required index):
 
- #+BEGIN_SRC extempore :noweb-ref set-midi-in
- (set_midi_in 3)
- #+END_SRC
-
+#+NAME: set-midi-in
+#+BEGIN_SRC extempore
+  (set_midi_in 3)
+#+END_SRC
 
      To make our =dsp= function controllable outside let's move =amplitude= and
      =controller= outside of lambda:
 
- #+BEGIN_SRC extempore :noweb-ref sine-closure-dsp
-   (bind-func dsp:DSP
-     (let ((amplitude 0.5)
-           (frequency 440.0))
-       (lambda (in time chan dat)
-           (* amplitude
-              (sin (* frequency
-                      (/ STWOPI SRf)
-                      (convert time)))))))
- #+END_SRC
+#+NAME: sine-closure-dsp
+#+BEGIN_SRC extempore
+  (bind-func dsp:DSP
+    (let ((amplitude 0.5)
+          (frequency 440.0))
+      (lambda (in time chan dat)
+          (* amplitude
+             (sin (* frequency
+                     (/ STWOPI SRf)
+                     (convert time)))))))
+#+END_SRC
 
      xtlang has a nice feature: closure environment is accessible outside using
      dot-syntax, =(closure.variable:type)= as getter and =(closure.variable:type
@@ -123,26 +128,28 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
      To read values from controller we would override =midi_cc= function callback
      provided by =midi_input= (replace *19* and *23* with your knobs CCs):
 
- #+BEGIN_SRC extempore :noweb-ref sine-midi-cc
-   (bind-func midi_cc
-     (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
-       (println "MIDI CC" controller value)
-       (cond ((= controller 19) (dsp.amplitude:SAMPLE (/ (convert value) 127.)))
-             ((= controller 23) (dsp.frequency:SAMPLE (* (convert value) 10.)))
-             (else 0.0:f))
-       void)))
- #+END_SRC
+#+NAME: sine-midi-cc
+#+BEGIN_SRC extempore
+  (bind-func midi_cc
+    (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
+      (println "MIDI CC" controller value)
+      (cond ((= controller 19) (dsp.amplitude:SAMPLE (/ (convert value) 127.)))
+            ((= controller 23) (dsp.frequency:SAMPLE (* (convert value) 10.)))
+            (else 0.0:f))
+      void)))
+#+END_SRC
 
      If you execute snippets one-by-one then you should have response already.
      Otherwise here is entire file:
 
- #+BEGIN_SRC extempore :tangle xtm/02-sound-sine-midi.xtm :noweb yes :mkdirp yes :padline no
- <<load-midi-input>>
- <<sine-closure-dsp>>
- <<set-dsp>>
- ;; <<set-midi-in>>
- <<sine-midi-cc>>
- #+END_SRC
+#+NAME: xtm/02-sound-sine-midi.xtm
+#+BEGIN_SRC extempore :tangle xtm/02-sound-sine-midi.xtm :noweb yes :mkdirp yes :padline no
+  <<load-midi-input>>
+  <<sine-closure-dsp>>
+  <<set-dsp>>
+  ;; <<set-midi-in>>
+  <<sine-midi-cc>>
+#+END_SRC
 
 *** [[https://app.lightnote.co/harmony][Harmony]]
 
@@ -157,18 +164,20 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     Let's load instrument library:
 
-#+BEGIN_SRC extempore :noweb-ref load-instruments
-(sys:load "libs/core/instruments.xtm")
+#+NAME: load-instruments
+#+BEGIN_SRC extempore
+  (sys:load "libs/core/instruments.xtm")
 #+END_SRC
 
     And define helpers for generating sine wave:
 
-#+BEGIN_SRC extempore :noweb-ref define-sine
-(bind-val omega SAMPLE (/ STWOPI SRf))
+#+NAME: define-sine
+#+BEGIN_SRC extempore
+  (bind-val omega SAMPLE (/ STWOPI SRf))
 
-(bind-func sine
-  (lambda (time:i64 freq:SAMPLE)
-    (sin (* omega freq (convert time)))))
+  (bind-func sine
+    (lambda (time:i64 freq:SAMPLE)
+      (sin (* omega freq (convert time)))))
 #+END_SRC
 
     =tuner_note= would be a quite straightforward, very similar to =dsp=
@@ -176,7 +185,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     initialization and context for several layers: instrument instance, note
     instance and calculating note's samples.
 
-#+BEGIN_SRC extempore :noweb-ref tuner-note
+#+NAME: tuner-note
+#+BEGIN_SRC extempore
   (bind-func tuner_note
     (lambda ()
       ;; here you can put init of entire instrument
@@ -196,7 +206,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     =tuner_fx= is even easier, because we just pass =tuner_note= result without
     any change:
 
-#+BEGIN_SRC extempore :noweb-ref tuner-fx
+#+NAME: tuner-fx
+#+BEGIN_SRC extempore
   (bind-func tuner_fx
     (lambda ()
       ;; here put fx init
@@ -206,8 +217,9 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     =make-instrument= macro allows to glue it together:
 
-#+BEGIN_SRC extempore :noweb-ref make-tuner
-(make-instrument tuner tuner)
+#+NAME: make-tuner
+#+BEGIN_SRC extempore
+  (make-instrument tuner tuner)
 #+END_SRC
 
     The first =tuner= is the name of our instrument, and the second one is
@@ -219,7 +231,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     Next step is to use our brand new instrument in dsp function:
 
-#+BEGIN_SRC extempore :noweb-ref tuner-dsp
+#+NAME: tuner-dsp
+#+BEGIN_SRC extempore
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       (tuner in time chan dat)))
@@ -227,30 +240,34 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     Okay, instrument is set up, let's play a note finally!
 
-#+BEGIN_SRC extempore :noweb-ref play-note-now
-(play-note (now) tuner 60 90 44100)
+#+NAME: play-note-now
+#+BEGIN_SRC extempore
+  (play-note (now) tuner 60 90 44100)
 #+END_SRC
 
     Wow! That's magic. Here is complete file for instrument and one note. Sip
     your coffee, we'll move to =play-note= signature explanation and playing harmony then.
 
-#+BEGIN_SRC extempore :noweb yes :noweb-ref setup-tuner
-<<load-instruments>>
-<<define-sine>>
-<<tuner-note>>
-<<tuner-fx>>
-<<make-tuner>>
-<<tuner-dsp>>
-<<set-dsp>>
+#+NAME: setup-tuner
+#+BEGIN_SRC extempore :noweb yes
+  <<load-instruments>>
+  <<define-sine>>
+  <<tuner-note>>
+  <<tuner-fx>>
+  <<make-tuner>>
+  <<tuner-dsp>>
+  <<set-dsp>>
 #+END_SRC
 
+#+NAME: xtm/03-harmony-tuner.xtm
 #+BEGIN_SRC extempore :tangle xtm/03-harmony-tuner.xtm :noweb yes :mkdirp yes :padline no
-<<setup-tuner>>
-<<play-note-now>>
+  <<setup-tuner>>
+  <<play-note-now>>
 #+END_SRC
 
     If you want just play chord from course page then don't wait anymore:
 
+#+NAME: pleasant-chord
 #+BEGIN_SRC extempore
   (let ((t (now))
         (dur 22050))
@@ -265,6 +282,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     And not so pleasant one:
 
+#+NAME: unpleasant-chord
 #+BEGIN_SRC extempore
   (let ((t (now))
         (dur 22050))
@@ -279,7 +297,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     Leveraging basic abstractions:
 
-#+BEGIN_SRC extempore :noweb-ref play-chord
+#+NAME: play-chord
+#+BEGIN_SRC extempore
   (define play-chord
     (lambda (t inst pitches dur)
       (let ((n (length pitches))
@@ -296,9 +315,10 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
     And the source file:
 
+#+NAME: xtm/04-harmony-chord.xtm
 #+BEGIN_SRC extempore :tangle xtm/04-harmony-chord.xtm :noweb yes :mkdirp yes :padline no
-<<setup-tuner>>
-<<play-chord>>
+  <<setup-tuner>>
+  <<play-chord>>
 #+END_SRC
 
     Now let's go into details what's happening in code above.
