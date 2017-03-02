@@ -26,11 +26,13 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: set-dsp
 #+BEGIN_SRC extempore
+  ;;;; set-dsp
   (dsp:set! dsp)
 #+END_SRC
 
 #+NAME: xtm/00-sound-silence.xtm
 #+BEGIN_SRC extempore :tangle xtm/00-sound-silence.xtm :noweb yes :mkdirp yes :padline no
+  ;;;; xtm/00-sound-silence.xtm
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       0.0))
@@ -52,6 +54,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: xtm/01-sound-sine.xtm
 #+BEGIN_SRC extempore :tangle xtm/01-sound-sine.xtm :noweb yes :mkdirp yes :padline no
+  ;;;; xtm/01-sound-sine.xtm
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       (let ((amplitude 0.5)
@@ -87,6 +90,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: load-midi-input
 #+BEGIN_SRC extempore
+  ;;;; load-midi-input
   (sys:load "libs/external/midi_input.xtm")
 #+END_SRC
 
@@ -101,6 +105,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: set-midi-in
 #+BEGIN_SRC extempore
+  ;;;; set-midi-in
   (set_midi_in 3)
 #+END_SRC
 
@@ -109,6 +114,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: sine-closure-dsp
 #+BEGIN_SRC extempore
+  ;;;; sine-closure-dsp
   (bind-func dsp:DSP
     (let ((amplitude 0.5)
           (frequency 440.0))
@@ -130,6 +136,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: sine-midi-cc
 #+BEGIN_SRC extempore
+  ;;;; sine-midi-cc
   (bind-func midi_cc
     (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
       (println "MIDI CC" controller value)
@@ -144,6 +151,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: xtm/02-sound-sine-midi.xtm
 #+BEGIN_SRC extempore :tangle xtm/02-sound-sine-midi.xtm :noweb yes :mkdirp yes :padline no
+  ;;;; xtm/02-sound-sine-midi.xtm
   <<load-midi-input>>
   <<sine-closure-dsp>>
   <<set-dsp>>
@@ -166,6 +174,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: load-instruments
 #+BEGIN_SRC extempore
+  ;;;; load-instruments
   (sys:load "libs/core/instruments.xtm")
 #+END_SRC
 
@@ -173,6 +182,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: define-sine
 #+BEGIN_SRC extempore
+  ;;;; define-sine
   (bind-val omega SAMPLE (/ STWOPI SRf))
 
   (bind-func sine
@@ -187,6 +197,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: tuner-note
 #+BEGIN_SRC extempore
+  ;;;; tuner-note
   (bind-func tuner_note
     (lambda ()
       ;; here you can put init of entire instrument
@@ -208,6 +219,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: tuner-fx
 #+BEGIN_SRC extempore
+  ;;;;  tuner-fx
   (bind-func tuner_fx
     (lambda ()
       ;; here put fx init
@@ -219,6 +231,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: make-tuner
 #+BEGIN_SRC extempore
+  ;;;; make-tuner
   (make-instrument tuner tuner)
 #+END_SRC
 
@@ -233,6 +246,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: tuner-dsp
 #+BEGIN_SRC extempore
+  ;;;; tuner-dsp
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       (tuner in time chan dat)))
@@ -242,6 +256,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: play-note-now
 #+BEGIN_SRC extempore
+  ;;;; play-note-now
   (play-note (now) tuner 60 90 44100)
 #+END_SRC
 
@@ -250,6 +265,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: setup-tuner
 #+BEGIN_SRC extempore :noweb yes
+  ;;;; setup-tuner
   <<load-instruments>>
   <<define-sine>>
   <<tuner-note>>
@@ -261,6 +277,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: xtm/03-harmony-tuner.xtm
 #+BEGIN_SRC extempore :tangle xtm/03-harmony-tuner.xtm :noweb yes :mkdirp yes :padline no
+  ;;;; xtm/03-harmony-tuner.xtm
   <<setup-tuner>>
   <<play-note-now>>
 #+END_SRC
@@ -269,6 +286,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: pleasant-chord
 #+BEGIN_SRC extempore
+  ;;;; pleasant-chord
   (let ((t (now))
         (dur 22050))
     (play-note t tuner 60 100 dur)
@@ -284,6 +302,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: unpleasant-chord
 #+BEGIN_SRC extempore
+  ;;;; unpleasant-chord
   (let ((t (now))
         (dur 22050))
     (play-note t tuner 61 100 dur)
@@ -299,6 +318,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: play-chord
 #+BEGIN_SRC extempore
+  ;;;; play-chord
   (define play-chord
     (lambda (t inst pitches dur)
       (let ((n (length pitches))
@@ -317,6 +337,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: xtm/04-harmony-chord.xtm
 #+BEGIN_SRC extempore :tangle xtm/04-harmony-chord.xtm :noweb yes :mkdirp yes :padline no
+  ;;;; xtm/04-harmony-chord.xtm
   <<setup-tuner>>
   <<play-chord>>
 #+END_SRC
