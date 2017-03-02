@@ -234,7 +234,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     Wow! That's magic. Here is complete file for instrument and one note. Sip
     your coffee, we'll move to =play-note= signature explanation and playing harmony then.
 
-#+BEGIN_SRC extempore :tangle xtm/03-harmony-tuner.xtm :noweb yes :mkdirp yes :padline no
+#+BEGIN_SRC extempore :noweb yes :noweb-ref setup-tuner
 <<load-instruments>>
 <<define-sine>>
 <<tuner-note>>
@@ -242,5 +242,63 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 <<make-tuner>>
 <<tuner-dsp>>
 <<set-dsp>>
+#+END_SRC
+
+#+BEGIN_SRC extempore :tangle xtm/03-harmony-tuner.xtm :noweb yes :mkdirp yes :padline no
+<<setup-tuner>>
 <<play-note-now>>
 #+END_SRC
+
+    If you want just play chord from course page then don't wait anymore:
+
+#+BEGIN_SRC extempore
+  (let ((t (now))
+        (dur 22050))
+    (play-note t tuner 60 100 dur)
+    (play-note (+ t (* 2 dur)) tuner 64 100 dur)
+    (play-note (+ t (* 4 dur)) tuner 67 100 dur)
+    (let ((t (+ t (* 6 dur))))
+      (play-note t tuner 60 100 dur)
+      (play-note t tuner 64 100 dur)
+      (play-note t tuner 67 100 dur)))
+#+END_SRC
+
+    And not so pleasant one:
+
+#+BEGIN_SRC extempore
+  (let ((t (now))
+        (dur 22050))
+    (play-note t tuner 61 100 dur)
+    (play-note (+ t (* 2 dur)) tuner 67 100 dur)
+    (play-note (+ t (* 4 dur)) tuner 75 100 dur)
+    (let ((t (+ t (* 6 dur))))
+      (play-note t tuner 61 100 dur)
+      (play-note t tuner 67 100 dur)
+      (play-note t tuner 75 100 dur)))
+#+END_SRC
+
+    Leveraging basic abstractions:
+
+#+BEGIN_SRC extempore :noweb-ref play-chord
+  (define play-chord
+    (lambda (t inst pitches dur)
+      (let ((n (length pitches))
+            (together-time (+ t (* 2 (length pitches) dur))))
+        (for-each
+         (lambda (i pitch)
+           (play-note (+ t (* 2 i dur)) inst pitch 100 dur)
+           (play-note together-time inst pitch 100 dur))
+         (range n)
+         pitches))))
+  (play-chord (now) tuner '(60 64 67) 22050)
+  ;; (play-chord (now) tuner '(61 67 75) 22050)
+#+END_SRC
+
+    And the source file:
+
+#+BEGIN_SRC extempore :tangle xtm/04-harmony-chord.xtm :noweb yes :mkdirp yes :padline no
+<<setup-tuner>>
+<<play-chord>>
+#+END_SRC
+
+    Now let's go into details what's happening in code above.
