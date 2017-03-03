@@ -321,13 +321,12 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
   ;;;; play-chord
   (define play-chord
     (lambda (t inst pitches dur)
-      (let ((n (length pitches))
-            (together-time (+ t (* 2 (length pitches) dur))))
+      (let ((together-time (+ t (* 2 (length pitches) dur))))
         (for-each
          (lambda (i pitch)
            (play-note (+ t (* 2 i dur)) inst pitch 100 dur)
            (play-note together-time inst pitch 100 dur))
-         (range n)
+         (range (length pitches))
          pitches))))
   (play-chord (now) tuner '(60 64 67) 22050)
   ;; (play-chord (now) tuner '(61 67 75) 22050)
@@ -343,3 +342,24 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 #+END_SRC
 
     Now let's go into details what's happening in code above.
+
+    First of all, breakdown of =play-note= signature:
+
+    - time :: when note should be started. Time in Extempore is expressed in
+              number of samples rendered from its start. Current time is
+              available via =now= function.
+    - instrument :: instrument to play note with. Remember second-level closure
+                    in =instrument_note=? Instrument argument is required to
+                    call it and initialize the note we are going to play.
+    - pitch :: frequency of the note expressed in terms of [[https://en.wikipedia.org/wiki/MIDI_tuning_standard][MIDI pitch]], 0-127
+    - vol :: amplitude of the note expressed as volume, as per formula: =(/ (exp
+             (/ vol 26.222)) 127.0)=, 0-127
+    - duration :: duration of note. Duration in Extempore is expressed as a
+                  number of samples to be generated. If you are rendering sound at 44100Hz
+                  sampling rate, then you need to pass 44100 for a 1 second long
+                  note.
+
+    Notice that =play-note= allows us to schedule note start at any time.
+    We use it in =play-chord= to play all passed pitches one by one and then to
+    play them all again, but simultaneously. We schedule all notes at ones, just
+    at differents points in time.
