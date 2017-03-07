@@ -385,7 +385,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
     play them all again, but simultaneously. We schedule all notes at ones, just
     at differents points in time.
 
-**** MIDI controller
+**** DONE MIDI controller
+     CLOSED: [2017-03-07 Tue 14:32]
 
      Let's do the trick and play notes from MIDI controller. The latest
      =midi_input= supports defining MIDI callback in Scheme (not only xtlang),
@@ -435,7 +436,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
      And whole files for button and keyboard:
 
 #+NAME: xtm/05-midi-chord-button.xtm
-#+BEGIN_SRC extempore :tangle xtm/05-midi-chord.xtm :noweb yes :mkdirp yes :paddle no
+#+BEGIN_SRC extempore :tangle xtm/05-midi-chord-button.xtm :noweb yes :mkdirp yes :paddle no
   ;;;; xtm/05-midi-chord-button.xtm
   <<xtm/04-harmony-chord.xtm>>
   <<midi-chords-pitch>>
@@ -444,7 +445,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 #+END_SRC
 
 #+NAME: xtm/06-midi-chord-keyboard.xtm
-#+BEGIN_SRC extempore :tangle xtm/05-midi-chord.xtm :noweb yes :mkdirp yes :paddle no
+#+BEGIN_SRC extempore :tangle xtm/06-midi-chord-keyboard.xtm :noweb yes :mkdirp yes :paddle no
   ;;;; xtm/06-midi-chord-keyboard.xtm
   <<xtm/04-harmony-chord.xtm>>
   <<midi-chords-play-keyboard>>
