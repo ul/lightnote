@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-24 Fri 16:42 -->
+<!-- 2017-03-24 Fri 16:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -232,15 +232,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcd57363">1. WTF?</a></li>
-<li><a href="#org883e3c5">2. Setup</a></li>
-<li><a href="#orgf6fa505">3. The Essential Guide to Music Theory</a>
+<li><a href="#orgaee9182">1. WTF?</a></li>
+<li><a href="#orgbbee8ff">2. Setup</a></li>
+<li><a href="#org23e7041">3. The Essential Guide to Music Theory</a>
 <ul>
-<li><a href="#org6581a6f">3.1. Sound</a>
+<li><a href="#orgddaf4b1">3.1. Sound</a>
 <ul>
-<li><a href="#org11c5426">3.1.1. Sound</a></li>
-<li><a href="#org952973e">3.1.2. Harmony</a></li>
-<li><a href="#org7fdb41a">3.1.3. Intermezzo: <code>osc_c</code></a></li>
+<li><a href="#org1dcd19e">3.1.1. Sound</a></li>
+<li><a href="#org78a92a4">3.1.2. Harmony</a></li>
+<li><a href="#org30c2e2b">3.1.3. Intermezzo: <code>osc_c</code></a></li>
 </ul>
 </li>
 </ul>
@@ -248,8 +248,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcd57363" class="outline-2">
-<h2 id="orgcd57363"><span class="section-number-2">1</span> WTF?</h2>
+<div id="outline-container-orgaee9182" class="outline-2">
+<h2 id="orgaee9182"><span class="section-number-2">1</span> WTF?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Learning <a href="https://github.com/digego/extempore">Extempore</a> while following <a href="https://www.lightnote.co/course/">LightNote</a> music theory course.
@@ -257,8 +257,8 @@ Learning <a href="https://github.com/digego/extempore">Extempore</a> while follo
 </div>
 </div>
 
-<div id="outline-container-org883e3c5" class="outline-2">
-<h2 id="org883e3c5"><span class="section-number-2">2</span> Setup</h2>
+<div id="outline-container-orgbbee8ff" class="outline-2">
+<h2 id="orgbbee8ff"><span class="section-number-2">2</span> Setup</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 To run examples you need Extempore's master branch HEAD compiled. Version 0.7
@@ -283,8 +283,8 @@ you to run examples. Otherwise you have two basic options:
 <li>Copy and paste code to buffer/editor from which you know how to send it to
 Extempore compiler (see <a href="http://digego.github.io/extempore/index.html">documentation</a>). Blocks are enclosed with xml-like
 comments to help you because GitHub org renderer doesn't do tangling. HTML
-exported version is included in repo for easier following, but it's not
-guaranteed to be up-to-date.</li>
+exported version is included in repo (read it <a href="http://ul.mantike.pro/lightnote/">here</a>) for easier following,
+but it's not guaranteed to be up-to-date.</li>
 <li>If you have Emacs installed then run <code>tangle.sh</code> to produce xtm files and
 run code from them. Xml-like comments with block names helps here with
 following too. Generated files are included in this repo either, but they
@@ -293,28 +293,28 @@ are not guaranteed to be up-to-date.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf6fa505" class="outline-2">
-<h2 id="orgf6fa505"><span class="section-number-2">3</span> The Essential Guide to Music Theory</h2>
+<div id="outline-container-org23e7041" class="outline-2">
+<h2 id="org23e7041"><span class="section-number-2">3</span> The Essential Guide to Music Theory</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org6581a6f" class="outline-3">
-<h3 id="org6581a6f"><span class="section-number-3">3.1</span> Sound</h3>
+</div><div id="outline-container-orgddaf4b1" class="outline-3">
+<h3 id="orgddaf4b1"><span class="section-number-3">3.1</span> Sound</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-org11c5426" class="outline-4">
-<h4 id="org11c5426"><span class="section-number-4">3.1.1</span> <a href="https://app.lightnote.co/sound">Sound</a></h4>
+</div><div id="outline-container-org1dcd19e" class="outline-4">
+<h4 id="org1dcd19e"><span class="section-number-4">3.1.1</span> <a href="https://app.lightnote.co/sound">Sound</a></h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 To produce sound in Extempore we need to setup xtlang callback:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org329c7bf"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<pre class="src src-extempore" id="orgfa5992f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
 <span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org0f9a590"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/00-sound-silence.xtm&gt;</span>
+<pre class="src src-extempore" id="orgaf9e8b7"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/00-sound-silence.xtm&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
     <span style="color: #D0372D;">0.0</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
@@ -347,7 +347,7 @@ want. Our first attempt produces silence, let's make it more audible:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org22c932f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/01-sound-sine.xtm&gt;</span>
+<pre class="src src-extempore" id="orgc4170f6"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/01-sound-sine.xtm&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>amplitude <span style="color: #D0372D;">0.5</span><span style="color: #907373;">)</span>
@@ -385,7 +385,7 @@ Frequency, or density of the wave, is perceived as a pitch. Play with it.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org6bcf22e"></a>MIDI controller<br /><div class="outline-text-5" id="text-3-1-1-1">
+<ol class="org-ol"><li><a id="org48ee626"></a>MIDI controller<br /><div class="outline-text-5" id="text-3-1-1-1">
 <p>
 While the essence of live coding is performance created with code,
 cyber-physical environment incorporates various media. Let's plug MIDI
@@ -394,7 +394,7 @@ we are going to load <code>midi_input</code> library:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org787d07a"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-midi-input&gt;</span>
+<pre class="src src-extempore" id="org24a236b"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-midi-input&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/external/midi_input.xtm"</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-midi-input&gt;</span>
 </pre>
@@ -414,7 +414,7 @@ index 0 then nothing to do. Otherwise execute (replace <b>3</b> with required in
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org0377bf2"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-midi-in&gt;</span>
+<pre class="src src-extempore" id="orga957d4e"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-midi-in&gt;</span>
 <span style="color: #707183;">(</span>set_midi_in <span style="color: #D0372D;">3</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-midi-in&gt;</span>
 </pre>
@@ -426,7 +426,7 @@ To make our <code>dsp</code> function controllable outside let's move <code>ampl
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org20357b1"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-closure-dsp&gt;</span>
+<pre class="src src-extempore" id="org5dbd4df"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-closure-dsp&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>amplitude <span style="color: #D0372D;">0.5</span><span style="color: #709870;">)</span>
         <span style="color: #709870;">(</span>frequency <span style="color: #D0372D;">440.0</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
@@ -453,7 +453,7 @@ provided by <code>midi_input</code> (replace <b>19</b> and <b>23</b> with your k
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgb701e32"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-midi-cc&gt;</span>
+<pre class="src src-extempore" id="org4cd6897"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-midi-cc&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">midi_cc</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp<span style="color: #6434A3;">:i32</span> controller<span style="color: #6434A3;">:i32</span> value<span style="color: #6434A3;">:i32</span> chan<span style="color: #6434A3;">:i32</span><span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span><span style="color: #006699;">println</span> <span style="color: #008000;">"MIDI CC"</span> controller value<span style="color: #909183;">)</span>
@@ -471,7 +471,7 @@ Otherwise here is entire file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org0b3ac9f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/02-sound-sine-midi.xtm&gt;</span>
+<pre class="src src-extempore" id="org39c5913"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/02-sound-sine-midi.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-midi-input&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/external/midi_input.xtm"</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-midi-input&gt;</span>
@@ -506,8 +506,8 @@ Otherwise here is entire file:
 </div></li></ol>
 </div>
 
-<div id="outline-container-org952973e" class="outline-4">
-<h4 id="org952973e"><span class="section-number-4">3.1.2</span> <a href="https://app.lightnote.co/harmony">Harmony</a></h4>
+<div id="outline-container-org78a92a4" class="outline-4">
+<h4 id="org78a92a4"><span class="section-number-4">3.1.2</span> <a href="https://app.lightnote.co/harmony">Harmony</a></h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 This section involves playing notes, to ease tinkering with them let's
@@ -525,7 +525,7 @@ Let's load instrument library:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org082d41c"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<pre class="src src-extempore" id="orga9c164b"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
 </pre>
@@ -536,7 +536,7 @@ And define helpers for generating sine wave:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orga7b3b36"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<pre class="src src-extempore" id="org6ac13c7"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
@@ -559,7 +559,7 @@ instance and calculating note's samples.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgfdb0a13"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<pre class="src src-extempore" id="org7afc042"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
@@ -584,7 +584,7 @@ any change:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org2086f97"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<pre class="src src-extempore" id="orgd9ce81a"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
@@ -599,7 +599,7 @@ any change:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org12c3e1f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<pre class="src src-extempore" id="org3ee8007"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
 <span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
 </pre>
@@ -619,7 +619,7 @@ Next step is to use our brand new instrument in dsp function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org9dd67a7"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<pre class="src src-extempore" id="org22b5d20"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
@@ -632,7 +632,7 @@ Okay, instrument is set up, let's play a note finally!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org31c9013"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-note-now&gt;</span>
+<pre class="src src-extempore" id="orgc4f9a61"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-note-now&gt;</span>
 <span style="color: #707183;">(</span>play-note <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">90</span> <span style="color: #D0372D;">44100</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-note-now&gt;</span>
 </pre>
@@ -644,7 +644,7 @@ your coffee, we'll move to <code>play-note</code> signature explanation and play
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org1fd37db"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
+<pre class="src src-extempore" id="org5c2a442"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
@@ -694,7 +694,7 @@ your coffee, we'll move to <code>play-note</code> signature explanation and play
 </div>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org81ee504"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/03-harmony-tuner.xtm&gt;</span>
+<pre class="src src-extempore" id="org05b59b0"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/03-harmony-tuner.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
@@ -753,7 +753,7 @@ If you want just play chord from course page then don't wait anymore:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgce2ceea"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-pleasant-chord&gt;</span>
+<pre class="src src-extempore" id="orgdb19347"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-pleasant-chord&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>t <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
       <span style="color: #909183;">(</span>dur <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>
   <span style="color: #7388D6;">(</span>play-note t tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
@@ -772,7 +772,7 @@ And not so pleasant one:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org92e5f38"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-unpleasant-chord&gt;</span>
+<pre class="src src-extempore" id="org9551ea3"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-unpleasant-chord&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>t <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
       <span style="color: #909183;">(</span>dur <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>
   <span style="color: #7388D6;">(</span>play-note t tuner <span style="color: #D0372D;">61</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
@@ -791,7 +791,7 @@ Leveraging basic abstractions:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgfaa6288"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-pleasant-chord&gt;</span>
+<pre class="src src-extempore" id="orgca6cf70"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-pleasant-chord&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">pleasant-chord</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span><span style="color: #006699;">list</span> pitch <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">4</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
@@ -800,7 +800,7 @@ Leveraging basic abstractions:
 </div>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org23673dc"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-unpleasant-chord&gt;</span>
+<pre class="src src-extempore" id="org214d8e5"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-unpleasant-chord&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">unpleasant-chord</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span><span style="color: #006699;">list</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">15</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
@@ -809,7 +809,7 @@ Leveraging basic abstractions:
 </div>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgf7fdc0f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-chord&gt;</span>
+<pre class="src src-extempore" id="orgb84bc69"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-chord&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">play-chord</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>t inst pitches dur<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>together-time <span style="color: #6276BA;">(</span><span style="color: #006699;">+</span> t <span style="color: #858580;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> <span style="color: #80A880;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #80A880;">)</span> dur<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
@@ -830,7 +830,7 @@ And the source file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orga4f083e"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
+<pre class="src src-extempore" id="org0e8cc91"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
@@ -936,7 +936,7 @@ at differents points in time.
 </p>
 </div>
 
-<ol class="org-ol"><li><a id="org30dc891"></a><span class="done DONE">DONE</span> MIDI controller<br /><div class="outline-text-5" id="text-3-1-2-1">
+<ol class="org-ol"><li><a id="org1e65a62"></a><span class="done DONE">DONE</span> MIDI controller<br /><div class="outline-text-5" id="text-3-1-2-1">
 <p>
 Let's do the trick and play notes from MIDI controller. The latest
 <code>midi_input</code> supports defining MIDI callback in Scheme (not only xtlang),
@@ -945,7 +945,7 @@ contexts. Replace <b>19</b> with your pitch slider CC.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org51072ed"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-pitch&gt;</span>
+<pre class="src src-extempore" id="org073ef9f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-pitch&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">*pitch*</span> <span style="color: #D0372D;">60</span><span style="color: #707183;">)</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-cc</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp controller value chan<span style="color: #909183;">)</span>
@@ -960,7 +960,7 @@ Now let's control note start and stop. Replace <b>1</b> with you button NT.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgfb790c8"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-button&gt;</span>
+<pre class="src src-extempore" id="orga747518"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-button&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-note-on</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp pitch volume chan<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span><span style="color: #0000FF;">if</span> <span style="color: #709870;">(</span><span style="color: #006699;">=</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span>
@@ -975,7 +975,7 @@ from pressed key:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org3d24e0d"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-keyboard&gt;</span>
+<pre class="src src-extempore" id="org5ccb005"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-keyboard&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-note-on</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp pitch volume chan<span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span>play-chord <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span> tuner <span style="color: #709870;">(</span>pleasant-chord pitch<span style="color: #709870;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
@@ -988,7 +988,7 @@ To make it work we need to start listener:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orga0a4f4e"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;start-midi-listener&gt;</span>
+<pre class="src src-extempore" id="org180650a"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;start-midi-listener&gt;</span>
 <span style="color: #707183;">(</span>scheme-midi-listener <span style="color: #7388D6;">(</span>*metro* 'get-beat <span style="color: #D0372D;">4</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">1/24</span><span style="color: #707183;">)</span><span style="background-color: #FFDCDC; text-decoration: underline;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/start-midi-listener&gt;</span>
 </pre>
@@ -999,7 +999,7 @@ And whole files for button and keyboard:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org8919140"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/05-midi-chord-button.xtm&gt;</span>
+<pre class="src src-extempore" id="org931c517"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/05-midi-chord-button.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
@@ -1092,7 +1092,7 @@ And whole files for button and keyboard:
 </div>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="orgc4eab57"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/06-midi-chord-keyboard.xtm&gt;</span>
+<pre class="src src-extempore" id="org1ebe8ae"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/06-midi-chord-keyboard.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
@@ -1178,8 +1178,8 @@ And whole files for button and keyboard:
 </div></li></ol>
 </div>
 
-<div id="outline-container-org7fdb41a" class="outline-4">
-<h4 id="org7fdb41a"><span class="section-number-4">3.1.3</span> Intermezzo: <code>osc_c</code></h4>
+<div id="outline-container-org30c2e2b" class="outline-4">
+<h4 id="org30c2e2b"><span class="section-number-4">3.1.3</span> Intermezzo: <code>osc_c</code></h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
 I mentioned Extempore's <code>osc_c</code> briefly as an alternative for hand-rolled
@@ -1199,7 +1199,7 @@ make&#x2026; hmmm&#x2026; <code>fm_tuner</code> instrument ;-)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org8f05c1f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note&gt;</span>
+<pre class="src src-extempore" id="org50abb7e"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_note</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
@@ -1227,7 +1227,7 @@ your taste!)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org77041ac"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-fx&gt;</span>
+<pre class="src src-extempore" id="orgb6d4b4d"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-fx&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_fx</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
     <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
@@ -1241,7 +1241,7 @@ The moment of truth, our poor-man FM-synth sound:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org9591d98"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/07-fm-tuner-sine.xtm&gt;</span>
+<pre class="src src-extempore" id="org6c3cc5f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/07-fm-tuner-sine.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
@@ -1299,7 +1299,7 @@ synth using <code>osc_c</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org4f0a303"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note-osc&gt;</span>
+<pre class="src src-extempore" id="orgc3e2d90"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note-osc&gt;</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_note</span>
   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
@@ -1327,7 +1327,7 @@ And the file:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-extempore" id="org60c4bed"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/08-fm-tuner-osc.xtm&gt;</span>
+<pre class="src src-extempore" id="orgc41c83d"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/08-fm-tuner-osc.xtm&gt;</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
 <span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
 <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
@@ -1383,7 +1383,7 @@ This one is so nice, isn't it? Viva la <code>osc_c</code> ;-)
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: rprakapchuk</p>
-<p class="date">Created: 2017-03-24 Fri 16:42</p>
+<p class="date">Created: 2017-03-24 Fri 16:47</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

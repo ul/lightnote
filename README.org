@@ -20,8 +20,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
   1. Copy and paste code to buffer/editor from which you know how to send it to
      Extempore compiler (see [[http://digego.github.io/extempore/index.html][documentation]]). Blocks are enclosed with xml-like
      comments to help you because GitHub org renderer doesn't do tangling. HTML
-     exported version is included in repo for easier following, but it's not
-     guaranteed to be up-to-date.
+     exported version is included in repo (read it [[http://ul.mantike.pro/lightnote/][here]]) for easier following,
+     but it's not guaranteed to be up-to-date.
   2. If you have Emacs installed then run =tangle.sh= to produce xtm files and
      run code from them. Xml-like comments with block names helps here with
      following too. Generated files are included in this repo either, but they
