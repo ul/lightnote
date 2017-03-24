@@ -5,17 +5,26 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 * Setup
 
   To run examples you need Extempore's master branch HEAD compiled. Version 0.7
-  doesn't fit, because Extempore API is undergoing substantial change.
+  doesn't fit, because Extempore API is undergoing substantial change. Some of
+  code suppose knowledge obtained from [[http://digego.github.io/extempore/index.html][official documentation]], especially about
+  setup and language basics.
 
-  To follow the course you need access to [[https://app.lightnote.co/][app,]] could be purchased [[https://www.lightnote.co/course/?ref=sidebarpremium#buy][here.]]
+  To follow the course you need access to [[https://app.lightnote.co/][app,]] could be purchased [[https://www.lightnote.co/course/?ref=sidebarpremium#buy][here.]] But
+  following course is not required for reading this document, especially if you
+  are already familiar with basic music theory and came here for Extempore
+  examples.
 
   If you are proficient with org-mode, you already know how it would best for
   you to run examples. Otherwise you have two basic options:
 
   1. Copy and paste code to buffer/editor from which you know how to send it to
-     Extempore compiler (see [[http://digego.github.io/extempore/index.html][documentation]]).
-  2. If you have Emacs installed then run =tangle.sh= to produce xtm files
-     and run code from them.
+     Extempore compiler (see [[http://digego.github.io/extempore/index.html][documentation]]). Blocks are enclosed with xml-like
+     comments to help you because GitHub org renderer doesn't do tangling.
+     Eventually HTML exported version would be included in repo for easier
+     following.
+  2. If you have Emacs installed then run =tangle.sh= to produce xtm files and
+     run code from them. Xml-like comments with block names helps here with
+     following too.
 
 * The Essential Guide to Music Theory
 
@@ -26,17 +35,19 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: set-dsp
 #+BEGIN_SRC extempore
-  ;;;; set-dsp
+  ;; <set-dsp>
   (dsp:set! dsp)
+  ;; </set-dsp>
 #+END_SRC
 
 #+NAME: xtm/00-sound-silence.xtm
 #+BEGIN_SRC extempore :tangle xtm/00-sound-silence.xtm :noweb yes :mkdirp yes :padline no
-  ;;;; xtm/00-sound-silence.xtm
+  ;; <xtm/00-sound-silence.xtm>
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       0.0))
   <<set-dsp>>
+  ;; </xtm/00-sound-silence.xtm>
 #+END_SRC
 
     Note callback signature:
@@ -54,7 +65,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: xtm/01-sound-sine.xtm
 #+BEGIN_SRC extempore :tangle xtm/01-sound-sine.xtm :noweb yes :mkdirp yes :padline no
-  ;;;; xtm/01-sound-sine.xtm
+  ;; <xtm/01-sound-sine.xtm>
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       (let ((amplitude 0.5)
@@ -64,6 +75,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
                    (/ STWOPI SRf)
                    (convert time)))))))
   <<set-dsp>>
+  ;; </xtm/01-sound-sine.xtm>
 #+END_SRC
 
     =STWOPI= is /2pi of type SAMPLE/ constant, and =convert= allows us to make a
@@ -90,8 +102,9 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: load-midi-input
 #+BEGIN_SRC extempore
-  ;;;; load-midi-input
+  ;; <load-midi-input>
   (sys:load "libs/external/midi_input.xtm")
+  ;; </load-midi-input>
 #+END_SRC
 
      It load a =portmidi= wrapper and tries to connect to the first midi device.
@@ -105,8 +118,9 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: set-midi-in
 #+BEGIN_SRC extempore
-  ;;;; set-midi-in
+  ;; <set-midi-in>
   (set_midi_in 3)
+  ;; </set-midi-in>
 #+END_SRC
 
      To make our =dsp= function controllable outside let's move =amplitude= and
@@ -114,7 +128,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: sine-closure-dsp
 #+BEGIN_SRC extempore
-  ;;;; sine-closure-dsp
+  ;; <sine-closure-dsp>
   (bind-func dsp:DSP
     (let ((amplitude 0.5)
           (frequency 440.0))
@@ -123,6 +137,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
              (sin (* frequency
                      (/ STWOPI SRf)
                      (convert time)))))))
+  ;; </sine-closure-dsp>
 #+END_SRC
 
      xtlang has a nice feature: closure environment is accessible outside using
@@ -136,14 +151,15 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: sine-midi-cc
 #+BEGIN_SRC extempore
-  ;;;; sine-midi-cc
+  ;; <sine-midi-cc>
   (bind-func midi_cc
     (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
       (println "MIDI CC" controller value)
       (cond ((= controller 19) (dsp.amplitude:SAMPLE (/ (convert value) 127.)))
             ((= controller 23) (dsp.frequency:SAMPLE (* (convert value) 10.)))
             (else 0.0:f))
-      void)))
+      void))
+  ;; </sine-midi-cc>
 #+END_SRC
 
      If you execute snippets one-by-one then you should have response already.
@@ -151,12 +167,13 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: xtm/02-sound-sine-midi.xtm
 #+BEGIN_SRC extempore :tangle xtm/02-sound-sine-midi.xtm :noweb yes :mkdirp yes :padline no
-  ;;;; xtm/02-sound-sine-midi.xtm
+  ;; <xtm/02-sound-sine-midi.xtm>
   <<load-midi-input>>
   <<sine-closure-dsp>>
   <<set-dsp>>
   ;; <<set-midi-in>>
   <<sine-midi-cc>>
+  ;; </xtm/02-sound-sine-midi.xtm>
 #+END_SRC
 
 *** [[https://app.lightnote.co/harmony][Harmony]]
@@ -174,20 +191,22 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: load-instruments
 #+BEGIN_SRC extempore
-  ;;;; load-instruments
+  ;; <load-instruments>
   (sys:load "libs/core/instruments.xtm")
+  ;; </load-instruments>
 #+END_SRC
 
     And define helpers for generating sine wave:
 
 #+NAME: define-sine
 #+BEGIN_SRC extempore
-  ;;;; define-sine
+  ;; <define-sine>
   (bind-val omega SAMPLE (/ STWOPI SRf))
 
   (bind-func sine
     (lambda (time:i64 freq:SAMPLE)
       (sin (* omega freq (convert time)))))
+  ;; </define-sine>
 #+END_SRC
 
     Alternatively, you can use Extempore's built-in =osc_c= generator which
@@ -200,7 +219,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: tuner-note
 #+BEGIN_SRC extempore
-  ;;;; tuner-note
+  ;; <tuner-note>
   (bind-func tuner_note
     (lambda ()
       ;; here you can put init of entire instrument
@@ -215,6 +234,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
             (if (< (- time starttime) duration)
                 (* amplitude (sine time frequency))
                 0.0))))))
+  ;; </tuner-note>
 #+END_SRC
 
     =tuner_fx= is even easier, because we just pass =tuner_note= result without
@@ -222,20 +242,22 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: tuner-fx
 #+BEGIN_SRC extempore
-  ;;;;  tuner-fx
+  ;; <tuner-fx>
   (bind-func tuner_fx
     (lambda ()
       ;; here put fx init
       (lambda (in:SAMPLE time:i64 chan:i64 dat:SAMPLE*)
         in)))
+  ;; </tuner-fx>
 #+END_SRC
 
     =make-instrument= macro allows to glue it together:
 
 #+NAME: make-tuner
 #+BEGIN_SRC extempore
-  ;;;; make-tuner
+  ;; <make-tuner>
   (make-instrument tuner tuner)
+  ;; </make-tuner>
 #+END_SRC
 
     The first =tuner= is the name of our instrument, and the second one is
@@ -249,18 +271,20 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: tuner-dsp
 #+BEGIN_SRC extempore
-  ;;;; tuner-dsp
+  ;; <tuner-dsp>
   (bind-func dsp:DSP
     (lambda (in time chan dat)
       (tuner in time chan dat)))
+  ;; </tuner-dsp>
 #+END_SRC
 
     Okay, instrument is set up, let's play a note finally!
 
 #+NAME: play-note-now
 #+BEGIN_SRC extempore
-  ;;;; play-note-now
+  ;; <play-note-now>
   (play-note (now) tuner 60 90 44100)
+  ;; </play-note-now>
 #+END_SRC
 
     Wow! That's magic. Here is complete file for instrument and one note. Sip
@@ -268,7 +292,7 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: setup-tuner
 #+BEGIN_SRC extempore :noweb yes
-  ;;;; setup-tuner
+  ;; <setup-tuner>
   <<load-instruments>>
   <<define-sine>>
   <<tuner-note>>
@@ -276,20 +300,22 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
   <<make-tuner>>
   <<tuner-dsp>>
   <<set-dsp>>
+  ;; </setup-tuner>
 #+END_SRC
 
 #+NAME: xtm/03-harmony-tuner.xtm
 #+BEGIN_SRC extempore :tangle xtm/03-harmony-tuner.xtm :noweb yes :mkdirp yes :padline no
-  ;;;; xtm/03-harmony-tuner.xtm
+  ;; <xtm/03-harmony-tuner.xtm>
   <<setup-tuner>>
   <<play-note-now>>
+  ;; </xtm/03-harmony-tuner.xtm>
 #+END_SRC
 
     If you want just play chord from course page then don't wait anymore:
 
 #+NAME: play-pleasant-chord
 #+BEGIN_SRC extempore
-  ;;;; play-pleasant-chord
+  ;; <play-pleasant-chord>
   (let ((t (now))
         (dur 22050))
     (play-note t tuner 60 100 dur)
@@ -299,13 +325,14 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
       (play-note t tuner 60 100 dur)
       (play-note t tuner 64 100 dur)
       (play-note t tuner 67 100 dur)))
+  ;; </play-pleasant-chord>
 #+END_SRC
 
     And not so pleasant one:
 
 #+NAME: play-unpleasant-chord
 #+BEGIN_SRC extempore
-  ;;;; play-unpleasant-chord
+  ;; <play-unpleasant-chord>
   (let ((t (now))
         (dur 22050))
     (play-note t tuner 61 100 dur)
@@ -315,29 +342,32 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
       (play-note t tuner 61 100 dur)
       (play-note t tuner 67 100 dur)
       (play-note t tuner 75 100 dur)))
+  ;; </play-unpleasant-chord>
 #+END_SRC
 
     Leveraging basic abstractions:
 
 #+NAME: define-pleasant-chord
 #+BEGIN_SRC extempore
-  ;;;; define-pleasant-chord
+  ;; <define-pleasant-chord>
   (define pleasant-chord
     (lambda (pitch)
       (list pitch (+ pitch 4) (+ pitch 7))))
+  ;; </define-pleasant-chord>
 #+END_SRC
 
 #+NAME: define-unpleasant-chord
 #+BEGIN_SRC extempore
-  ;;;; define-unpleasant-chord
+  ;; <define-unpleasant-chord>
   (define unpleasant-chord
     (lambda (pitch)
       (list (+ pitch 1) (+ pitch 7) (+ pitch 15))))
+  ;; </define-unpleasant-chord>
 #+END_SRC
 
 #+NAME: play-chord
 #+BEGIN_SRC extempore
-  ;;;; play-chord
+  ;; <play-chord>
   (define play-chord
     (lambda (t inst pitches dur)
       (let ((together-time (+ t (* 2 (length pitches) dur))))
@@ -349,17 +379,19 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
          pitches))))
   (play-chord (now) tuner (pleasant-chord 60) 22050)
   ;; (play-chord (now) tuner (unpleasant-chord 60) 22050)
+  ;; </play-chord>
 #+END_SRC
 
     And the source file:
 
 #+NAME: xtm/04-harmony-chord.xtm
 #+BEGIN_SRC extempore :tangle xtm/04-harmony-chord.xtm :noweb yes :mkdirp yes :padline no
-  ;;;; xtm/04-harmony-chord.xtm
+  ;; <xtm/04-harmony-chord.xtm>
   <<setup-tuner>>
   <<define-pleasant-chord>>
   <<define-unpleasant-chord>>
   <<play-chord>>
+  ;; </xtm/04-harmony-chord.xtm>
 #+END_SRC
 
     Now let's go into details what's happening in code above.
@@ -395,23 +427,25 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: midi-chords-pitch
 #+BEGIN_SRC extempore
-  ;;;; midi-chords-pitch
+  ;; <midi-chords-pitch>
   (define *pitch* 60)
   (define midi-cc
     (lambda (timestamp controller value chan)
       (cond ((= controller 19) (set! *pitch* value))
             (else #f))))
+  ;; </midi-chords-pitch>
 #+END_SRC
 
      Now let's control note start and stop. Replace *1* with you button NT.
 
 #+NAME: midi-chords-play-button
 #+BEGIN_SRC extempore
-  ;;;; midi-chords-play-button
+  ;; <midi-chords-play-button>
   (define midi-note-on
     (lambda (timestamp pitch volume chan)
       (if (= pitch 1)
           (play-chord (now) tuner (pleasant-chord *pitch*) 22050))))
+  ;; </midi-chords-play-button>
 #+END_SRC
 
      As an alternative, if you have MIDI keyboard, you can take pitch directly
@@ -419,35 +453,39 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
 #+NAME: midi-chords-play-keyboard
 #+BEGIN_SRC extempore
-  ;;;; midi-chords-play-keyboard
+  ;; <midi-chords-play-keyboard>
   (define midi-note-on
     (lambda (timestamp pitch volume chan)
       (play-chord (now) tuner (pleasant-chord pitch) 22050)))
+  ;; </midi-chords-play-keyboard>
 #+END_SRC
 
      To make it work we need to start listener:
 
 #+NAME: start-midi-listener
 #+BEGIN_SRC extempore
-  ;;;; start-midi-listener
+  ;; <start-midi-listener>
   (scheme-midi-listener (*metro* 'get-beat 4) 1/24))
+  ;; </start-midi-listener>
 #+END_SRC
 
      And whole files for button and keyboard:
 
 #+NAME: xtm/05-midi-chord-button.xtm
 #+BEGIN_SRC extempore :tangle xtm/05-midi-chord-button.xtm :noweb yes :mkdirp yes :paddle no
-  ;;;; xtm/05-midi-chord-button.xtm
+  ;; <xtm/05-midi-chord-button.xtm>
   <<xtm/04-harmony-chord.xtm>>
   <<midi-chords-pitch>>
   <<midi-chords-play-button>>
   <<start-midi-listener>>
+  ;; </xtm/05-midi-chord-button.xtm>
 #+END_SRC
 
 #+NAME: xtm/06-midi-chord-keyboard.xtm
 #+BEGIN_SRC extempore :tangle xtm/06-midi-chord-keyboard.xtm :noweb yes :mkdirp yes :paddle no
-  ;;;; xtm/06-midi-chord-keyboard.xtm
+  ;; <xtm/06-midi-chord-keyboard.xtm>
   <<xtm/04-harmony-chord.xtm>>
   <<midi-chords-play-keyboard>>
   <<start-midi-listener>>
+  ;; </xtm/06-midi-chord-keyboard.xtm>
 #+END_SRC
