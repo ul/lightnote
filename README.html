@@ -1,0 +1,1390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-03-24 Fri 16:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="rprakapchuk" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcd57363">1. WTF?</a></li>
+<li><a href="#org883e3c5">2. Setup</a></li>
+<li><a href="#orgf6fa505">3. The Essential Guide to Music Theory</a>
+<ul>
+<li><a href="#org6581a6f">3.1. Sound</a>
+<ul>
+<li><a href="#org11c5426">3.1.1. Sound</a></li>
+<li><a href="#org952973e">3.1.2. Harmony</a></li>
+<li><a href="#org7fdb41a">3.1.3. Intermezzo: <code>osc_c</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcd57363" class="outline-2">
+<h2 id="orgcd57363"><span class="section-number-2">1</span> WTF?</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Learning <a href="https://github.com/digego/extempore">Extempore</a> while following <a href="https://www.lightnote.co/course/">LightNote</a> music theory course.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org883e3c5" class="outline-2">
+<h2 id="org883e3c5"><span class="section-number-2">2</span> Setup</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To run examples you need Extempore's master branch HEAD compiled. Version 0.7
+doesn't fit, because Extempore API is undergoing substantial change. Some of
+code suppose knowledge obtained from <a href="http://digego.github.io/extempore/index.html">official documentation</a>, especially about
+setup and language basics.
+</p>
+
+<p>
+To follow the course you need access to <a href="https://app.lightnote.co/">app,</a> could be purchased <a href="https://www.lightnote.co/course/?ref=sidebarpremium#buy">here.</a> But
+following course is not required for reading this document, especially if you
+are already familiar with basic music theory and came here for Extempore
+examples.
+</p>
+
+<p>
+If you are proficient with org-mode, you already know how it would best for
+you to run examples. Otherwise you have two basic options:
+</p>
+
+<ol class="org-ol">
+<li>Copy and paste code to buffer/editor from which you know how to send it to
+Extempore compiler (see <a href="http://digego.github.io/extempore/index.html">documentation</a>). Blocks are enclosed with xml-like
+comments to help you because GitHub org renderer doesn't do tangling. HTML
+exported version is included in repo for easier following, but it's not
+guaranteed to be up-to-date.</li>
+<li>If you have Emacs installed then run <code>tangle.sh</code> to produce xtm files and
+run code from them. Xml-like comments with block names helps here with
+following too. Generated files are included in this repo either, but they
+are not guaranteed to be up-to-date.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf6fa505" class="outline-2">
+<h2 id="orgf6fa505"><span class="section-number-2">3</span> The Essential Guide to Music Theory</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org6581a6f" class="outline-3">
+<h3 id="org6581a6f"><span class="section-number-3">3.1</span> Sound</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-org11c5426" class="outline-4">
+<h4 id="org11c5426"><span class="section-number-4">3.1.1</span> <a href="https://app.lightnote.co/sound">Sound</a></h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+To produce sound in Extempore we need to setup xtlang callback:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org329c7bf"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org0f9a590"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/00-sound-silence.xtm&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #D0372D;">0.0</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/00-sound-silence.xtm&gt;</span>
+</pre>
+</div>
+
+<p>
+Note callback signature:
+</p>
+
+<dl class="org-dl">
+<dt>in:SAMPLE</dt><dd>sample from input device</dd>
+<dt>time:i64</dt><dd>sample number</dd>
+<dt>chan:i64</dt><dd>audio channel</dd>
+<dt>dat:SAMPLE*</dt><dd>user data</dd>
+<dt>&lt;return&gt;:SAMPLE</dt><dd>sample at given channel and time</dd>
+</dl>
+
+<p>
+sample value varies from -1.0 to 1.0
+</p>
+
+<p>
+You can set dsp function once, but then redefine it as many times as your
+want. Our first attempt produces silence, let's make it more audible:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org22c932f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/01-sound-sine.xtm&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>amplitude <span style="color: #D0372D;">0.5</span><span style="color: #907373;">)</span>
+          <span style="color: #907373;">(</span>frequency <span style="color: #D0372D;">440.0</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span><span style="color: #006699;">*</span> amplitude
+         <span style="color: #907373;">(</span><span style="color: #006699;">sin</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> frequency
+                 <span style="color: #858580;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #858580;">)</span>
+                 <span style="color: #858580;">(</span>convert time<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/01-sound-sine.xtm&gt;</span>
+</pre>
+</div>
+
+<p>
+<code>STWOPI</code> is <i>2pi of type SAMPLE</i> constant, and <code>convert</code> allows us to make a
+<code>SAMPLE</code> typed value from <code>time</code>. <code>SRf</code> refers to current sampling frequency.
+Extempore uses symbiosis of two different languages with similar, LISPy,
+syntax: Scheme and xtlang. Performance-sensitive parts (usually dsp) are
+implemented in xtlang, and other stuff (usually control) is done in Scheme.
+xtlang is very much like C but with LISP syntax and proper closures.
+</p>
+
+<p>
+So far so good, we've obtained a basic form of sound — a sine wave.
+Amplitude, or height of the wave (in case you are following graphics in
+course), in our example is half of maximum available. <code>sin</code> ranges from -1.0
+to 1.0 and we multiply it by 0.5. It affects sound loudness. Try to play with
+it.
+</p>
+
+<p>
+Frequency, or density of the wave, is perceived as a pitch. Play with it.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org6bcf22e"></a>MIDI controller<br /><div class="outline-text-5" id="text-3-1-1-1">
+<p>
+While the essence of live coding is performance created with code,
+cyber-physical environment incorporates various media. Let's plug MIDI
+controller and play with amplitude and frequency using it. For that purpose
+we are going to load <code>midi_input</code> library:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org787d07a"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-midi-input&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/external/midi_input.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-midi-input&gt;</span>
+</pre>
+</div>
+
+<p>
+It load a <code>portmidi</code> wrapper and tries to connect to the first midi device.
+The latter fact is important because if you will try to connect to this
+device again by <code>(set_midi_in 0)</code> you will get unhelpful error message
+<i>Invalid device ID.</i>
+</p>
+
+<p>
+Look into console where you are running Extempore. <code>midi_input</code> calls
+<code>(pm_print_devices)</code> on startup. If you MIDI controller is listed under the
+index 0 then nothing to do. Otherwise execute (replace <b>3</b> with required index):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org0377bf2"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-midi-in&gt;</span>
+<span style="color: #707183;">(</span>set_midi_in <span style="color: #D0372D;">3</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-midi-in&gt;</span>
+</pre>
+</div>
+
+<p>
+To make our <code>dsp</code> function controllable outside let's move <code>amplitude</code> and
+<code>controller</code> outside of lambda:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org20357b1"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-closure-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>amplitude <span style="color: #D0372D;">0.5</span><span style="color: #709870;">)</span>
+        <span style="color: #709870;">(</span>frequency <span style="color: #D0372D;">440.0</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in time chan dat<span style="color: #709870;">)</span>
+        <span style="color: #709870;">(</span><span style="color: #006699;">*</span> amplitude
+           <span style="color: #907373;">(</span><span style="color: #006699;">sin</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> frequency
+                   <span style="color: #858580;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #858580;">)</span>
+                   <span style="color: #858580;">(</span>convert time<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/sine-closure-dsp&gt;</span>
+</pre>
+</div>
+
+<p>
+xtlang has a nice feature: closure environment is accessible outside using
+dot-syntax, <code>(closure.variable:type)</code> as getter and <code>(closure.variable:type
+     value)</code> as setter. This feature is arguable from the point of view of
+functional style leaning towards purity and referential transparency, but I
+guess it provides good trade for performance.
+</p>
+
+<p>
+To read values from controller we would override <code>midi_cc</code> function callback
+provided by <code>midi_input</code> (replace <b>19</b> and <b>23</b> with your knobs CCs):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgb701e32"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-midi-cc&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">midi_cc</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp<span style="color: #6434A3;">:i32</span> controller<span style="color: #6434A3;">:i32</span> value<span style="color: #6434A3;">:i32</span> chan<span style="color: #6434A3;">:i32</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">println</span> <span style="color: #008000;">"MIDI CC"</span> controller value<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span><span style="color: #006699;">=</span> controller <span style="color: #D0372D;">19</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span>dsp.amplitude<span style="color: #6434A3;">:SAMPLE</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">/</span> <span style="color: #858580;">(</span><span style="color: #0000FF;">convert</span> value<span style="color: #858580;">)</span> <span style="color: #D0372D;">127.</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #709870;">(</span><span style="color: #907373;">(</span><span style="color: #006699;">=</span> controller <span style="color: #D0372D;">23</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span>dsp.frequency<span style="color: #6434A3;">:SAMPLE</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> <span style="color: #858580;">(</span><span style="color: #0000FF;">convert</span> value<span style="color: #858580;">)</span> <span style="color: #D0372D;">10.</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #709870;">(</span><span style="color: #0000FF;">else</span> <span style="color: #D0372D;">0.0:f</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #006699;">void</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/sine-midi-cc&gt;</span>
+</pre>
+</div>
+
+<p>
+If you execute snippets one-by-one then you should have response already.
+Otherwise here is entire file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org0b3ac9f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/02-sound-sine-midi.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-midi-input&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/external/midi_input.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-midi-input&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-closure-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>amplitude <span style="color: #D0372D;">0.5</span><span style="color: #709870;">)</span>
+        <span style="color: #709870;">(</span>frequency <span style="color: #D0372D;">440.0</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in time chan dat<span style="color: #709870;">)</span>
+        <span style="color: #709870;">(</span><span style="color: #006699;">*</span> amplitude
+           <span style="color: #907373;">(</span><span style="color: #006699;">sin</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> frequency
+                   <span style="color: #858580;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #858580;">)</span>
+                   <span style="color: #858580;">(</span>convert time<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/sine-closure-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">;; &lt;set-midi-in&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(set_midi_in 3)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">;; &lt;/set-midi-in&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;sine-midi-cc&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">midi_cc</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp<span style="color: #6434A3;">:i32</span> controller<span style="color: #6434A3;">:i32</span> value<span style="color: #6434A3;">:i32</span> chan<span style="color: #6434A3;">:i32</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">println</span> <span style="color: #008000;">"MIDI CC"</span> controller value<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span><span style="color: #006699;">=</span> controller <span style="color: #D0372D;">19</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span>dsp.amplitude<span style="color: #6434A3;">:SAMPLE</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">/</span> <span style="color: #858580;">(</span><span style="color: #0000FF;">convert</span> value<span style="color: #858580;">)</span> <span style="color: #D0372D;">127.</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #709870;">(</span><span style="color: #907373;">(</span><span style="color: #006699;">=</span> controller <span style="color: #D0372D;">23</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span>dsp.frequency<span style="color: #6434A3;">:SAMPLE</span> <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> <span style="color: #858580;">(</span><span style="color: #0000FF;">convert</span> value<span style="color: #858580;">)</span> <span style="color: #D0372D;">10.</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #709870;">(</span><span style="color: #0000FF;">else</span> <span style="color: #D0372D;">0.0:f</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #006699;">void</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/sine-midi-cc&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/02-sound-sine-midi.xtm&gt;</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org952973e" class="outline-4">
+<h4 id="org952973e"><span class="section-number-4">3.1.2</span> <a href="https://app.lightnote.co/harmony">Harmony</a></h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+This section involves playing notes, to ease tinkering with them let's
+introduce instruments. Extempore instrument is essentially a pair of
+functions which knows how to render note of the given frequency and
+amplitude. Let's call our first intrument just a <code>tuner</code>, because it doesn't
+care about shape of the note of any sound effects, it just tries to play a
+plain sine wave for us. First function is <code>tuner_note</code> and
+convert note data to sample. Second function is <code>tuner_fx</code> which adds
+additional processing to the sound (none in our case).
+</p>
+
+<p>
+Let's load instrument library:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org082d41c"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+</pre>
+</div>
+
+<p>
+And define helpers for generating sine wave:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orga7b3b36"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+</pre>
+</div>
+
+<p>
+Alternatively, you can use Extempore's built-in <code>osc_c</code> generator which
+closes over phase by itself and don't require passing down the time.
+</p>
+
+<p>
+<code>tuner_note</code> would be a quite straightforward, very similar to <code>dsp</code>
+function from previous chapter, but wrapped in several lambdas to provide
+initialization and context for several layers: instrument instance, note
+instance and calculating note's samples.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgfdb0a13"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude <span style="color: #80A880;">(</span>sine time frequency<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-note&gt;</span>
+</pre>
+</div>
+
+<p>
+<code>tuner_fx</code> is even easier, because we just pass <code>tuner_note</code> result without
+any change:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org2086f97"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-fx&gt;</span>
+</pre>
+</div>
+
+<p>
+<code>make-instrument</code> macro allows to glue it together:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org12c3e1f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
+</pre>
+</div>
+
+<p>
+The first <code>tuner</code> is the name of our instrument, and the second one is
+function name prefix. Extempore than will glue <code>tuner_note</code> and <code>tuner_fx</code>
+functions. Beware not to make a typo in function names, because otherwise
+segmentation fault is more than probable. Extempore will warn new that
+functino is not found, but then will say that new instrument is bound anyway
+and then will crash trying to play it.
+</p>
+
+<p>
+Next step is to use our brand new instrument in dsp function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org9dd67a7"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-dsp&gt;</span>
+</pre>
+</div>
+
+<p>
+Okay, instrument is set up, let's play a note finally!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org31c9013"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-note-now&gt;</span>
+<span style="color: #707183;">(</span>play-note <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">90</span> <span style="color: #D0372D;">44100</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-note-now&gt;</span>
+</pre>
+</div>
+
+<p>
+Wow! That's magic. Here is complete file for instrument and one note. Sip
+your coffee, we'll move to <code>play-note</code> signature explanation and playing harmony then.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org1fd37db"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude <span style="color: #80A880;">(</span>sine time frequency<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-note&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-fx&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/setup-tuner&gt;</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org81ee504"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/03-harmony-tuner.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude <span style="color: #80A880;">(</span>sine time frequency<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-note&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-fx&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-note-now&gt;</span>
+<span style="color: #707183;">(</span>play-note <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">90</span> <span style="color: #D0372D;">44100</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-note-now&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/03-harmony-tuner.xtm&gt;</span>
+</pre>
+</div>
+
+<p>
+If you want just play chord from course page then don't wait anymore:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgce2ceea"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-pleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>t <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+      <span style="color: #909183;">(</span>dur <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>play-note t tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>play-note <span style="color: #909183;">(</span><span style="color: #006699;">+</span> t <span style="color: #709870;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> dur<span style="color: #709870;">)</span><span style="color: #909183;">)</span> tuner <span style="color: #D0372D;">64</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>play-note <span style="color: #909183;">(</span><span style="color: #006699;">+</span> t <span style="color: #709870;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">4</span> dur<span style="color: #709870;">)</span><span style="color: #909183;">)</span> tuner <span style="color: #D0372D;">67</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>t <span style="color: #907373;">(</span><span style="color: #006699;">+</span> t <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">6</span> dur<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-note t tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">100</span> dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-note t tuner <span style="color: #D0372D;">64</span> <span style="color: #D0372D;">100</span> dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-note t tuner <span style="color: #D0372D;">67</span> <span style="color: #D0372D;">100</span> dur<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-pleasant-chord&gt;</span>
+</pre>
+</div>
+
+<p>
+And not so pleasant one:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org92e5f38"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-unpleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">(</span><span style="color: #909183;">(</span>t <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+      <span style="color: #909183;">(</span>dur <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>play-note t tuner <span style="color: #D0372D;">61</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>play-note <span style="color: #909183;">(</span><span style="color: #006699;">+</span> t <span style="color: #709870;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> dur<span style="color: #709870;">)</span><span style="color: #909183;">)</span> tuner <span style="color: #D0372D;">67</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span>play-note <span style="color: #909183;">(</span><span style="color: #006699;">+</span> t <span style="color: #709870;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">4</span> dur<span style="color: #709870;">)</span><span style="color: #909183;">)</span> tuner <span style="color: #D0372D;">75</span> <span style="color: #D0372D;">100</span> dur<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>t <span style="color: #907373;">(</span><span style="color: #006699;">+</span> t <span style="color: #6276BA;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">6</span> dur<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-note t tuner <span style="color: #D0372D;">61</span> <span style="color: #D0372D;">100</span> dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-note t tuner <span style="color: #D0372D;">67</span> <span style="color: #D0372D;">100</span> dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-note t tuner <span style="color: #D0372D;">75</span> <span style="color: #D0372D;">100</span> dur<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-unpleasant-chord&gt;</span>
+</pre>
+</div>
+
+<p>
+Leveraging basic abstractions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgfaa6288"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-pleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">pleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> pitch <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">4</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-pleasant-chord&gt;</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org23673dc"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-unpleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">unpleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">15</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-unpleasant-chord&gt;</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgf7fdc0f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">play-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>t inst pitches dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>together-time <span style="color: #6276BA;">(</span><span style="color: #006699;">+</span> t <span style="color: #858580;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> <span style="color: #80A880;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #80A880;">)</span> dur<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">for-each</span>
+       <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>i pitch<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note <span style="color: #858580;">(</span><span style="color: #006699;">+</span> t <span style="color: #80A880;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> i dur<span style="color: #80A880;">)</span><span style="color: #858580;">)</span> inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note together-time inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       <span style="color: #907373;">(</span>range <span style="color: #6276BA;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       pitches<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>play-chord <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #7388D6;">(</span>pleasant-chord <span style="color: #D0372D;">60</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(play-chord (now) tuner (unpleasant-chord 60) 22050)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-chord&gt;</span>
+</pre>
+</div>
+
+<p>
+And the source file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orga4f083e"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude <span style="color: #80A880;">(</span>sine time frequency<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-note&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-fx&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-pleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">pleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> pitch <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">4</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-pleasant-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-unpleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">unpleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">15</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-unpleasant-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">play-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>t inst pitches dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>together-time <span style="color: #6276BA;">(</span><span style="color: #006699;">+</span> t <span style="color: #858580;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> <span style="color: #80A880;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #80A880;">)</span> dur<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">for-each</span>
+       <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>i pitch<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note <span style="color: #858580;">(</span><span style="color: #006699;">+</span> t <span style="color: #80A880;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> i dur<span style="color: #80A880;">)</span><span style="color: #858580;">)</span> inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note together-time inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       <span style="color: #907373;">(</span>range <span style="color: #6276BA;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       pitches<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>play-chord <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #7388D6;">(</span>pleasant-chord <span style="color: #D0372D;">60</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(play-chord (now) tuner (unpleasant-chord 60) 22050)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/04-harmony-chord.xtm&gt;</span>
+</pre>
+</div>
+
+<p>
+Now let's go into details what's happening in code above.
+</p>
+
+<p>
+First of all, breakdown of <code>play-note</code> signature:
+</p>
+
+<dl class="org-dl">
+<dt>time</dt><dd>when note should be started. Time in Extempore is expressed in
+number of samples rendered from its start. Current time is
+available via <code>now</code> function.</dd>
+<dt>instrument</dt><dd>instrument to play note with. Remember second-level closure
+in <code>instrument_note</code>? Instrument argument is required to
+call it and initialize the note we are going to play.</dd>
+<dt>pitch</dt><dd>frequency of the note expressed in terms of <a href="https://en.wikipedia.org/wiki/MIDI_tuning_standard">MIDI pitch</a>, 0-127</dd>
+<dt>vol</dt><dd>amplitude of the note expressed as volume, as per formula: <code>(/ (exp
+             (/ vol 26.222)) 127.0)</code>, 0-127</dd>
+<dt>duration</dt><dd>duration of note. Duration in Extempore is expressed as a
+number of samples to be generated. If you are rendering sound at 44100Hz
+sampling rate, then you need to pass 44100 for a 1 second long
+note.</dd>
+</dl>
+
+<p>
+Notice that <code>play-note</code> allows us to schedule note start at any time.
+We use it in <code>play-chord</code> to play all passed pitches one by one and then to
+play them all again, but simultaneously. We schedule all notes at ones, just
+at differents points in time.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="org30dc891"></a><span class="done DONE">DONE</span> MIDI controller<br /><div class="outline-text-5" id="text-3-1-2-1">
+<p>
+Let's do the trick and play notes from MIDI controller. The latest
+<code>midi_input</code> supports defining MIDI callback in Scheme (not only xtlang),
+it will make stuff easier for us because of no need to switch language
+contexts. Replace <b>19</b> with your pitch slider CC.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org51072ed"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-pitch&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">*pitch*</span> <span style="color: #D0372D;">60</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-cc</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp controller value chan<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span><span style="color: #006699;">=</span> controller <span style="color: #D0372D;">19</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span><span style="color: #006699;">set!</span> *pitch* value<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #709870;">(</span><span style="color: #0000FF;">else</span> <span style="color: #D0372D;">#f</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/midi-chords-pitch&gt;</span>
+</pre>
+</div>
+
+<p>
+Now let's control note start and stop. Replace <b>1</b> with you button NT.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgfb790c8"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-button&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-note-on</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp pitch volume chan<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">if</span> <span style="color: #709870;">(</span><span style="color: #006699;">=</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span>
+        <span style="color: #709870;">(</span>play-chord <span style="color: #907373;">(</span><span style="color: #006699;">now</span><span style="color: #907373;">)</span> tuner <span style="color: #907373;">(</span>pleasant-chord *pitch*<span style="color: #907373;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/midi-chords-play-button&gt;</span>
+</pre>
+</div>
+
+<p>
+As an alternative, if you have MIDI keyboard, you can take pitch directly
+from pressed key:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org3d24e0d"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-keyboard&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-note-on</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp pitch volume chan<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-chord <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span> tuner <span style="color: #709870;">(</span>pleasant-chord pitch<span style="color: #709870;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/midi-chords-play-keyboard&gt;</span>
+</pre>
+</div>
+
+<p>
+To make it work we need to start listener:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orga0a4f4e"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;start-midi-listener&gt;</span>
+<span style="color: #707183;">(</span>scheme-midi-listener <span style="color: #7388D6;">(</span>*metro* 'get-beat <span style="color: #D0372D;">4</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">1/24</span><span style="color: #707183;">)</span><span style="background-color: #FFDCDC; text-decoration: underline;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/start-midi-listener&gt;</span>
+</pre>
+</div>
+
+<p>
+And whole files for button and keyboard:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org8919140"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/05-midi-chord-button.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude <span style="color: #80A880;">(</span>sine time frequency<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-note&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-fx&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-pleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">pleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> pitch <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">4</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-pleasant-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-unpleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">unpleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">15</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-unpleasant-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">play-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>t inst pitches dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>together-time <span style="color: #6276BA;">(</span><span style="color: #006699;">+</span> t <span style="color: #858580;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> <span style="color: #80A880;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #80A880;">)</span> dur<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">for-each</span>
+       <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>i pitch<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note <span style="color: #858580;">(</span><span style="color: #006699;">+</span> t <span style="color: #80A880;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> i dur<span style="color: #80A880;">)</span><span style="color: #858580;">)</span> inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note together-time inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       <span style="color: #907373;">(</span>range <span style="color: #6276BA;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       pitches<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>play-chord <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #7388D6;">(</span>pleasant-chord <span style="color: #D0372D;">60</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(play-chord (now) tuner (unpleasant-chord 60) 22050)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/04-harmony-chord.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-pitch&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">*pitch*</span> <span style="color: #D0372D;">60</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-cc</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp controller value chan<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span><span style="color: #006699;">=</span> controller <span style="color: #D0372D;">19</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span><span style="color: #006699;">set!</span> *pitch* value<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #709870;">(</span><span style="color: #0000FF;">else</span> <span style="color: #D0372D;">#f</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/midi-chords-pitch&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-button&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-note-on</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp pitch volume chan<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">if</span> <span style="color: #709870;">(</span><span style="color: #006699;">=</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span>
+        <span style="color: #709870;">(</span>play-chord <span style="color: #907373;">(</span><span style="color: #006699;">now</span><span style="color: #907373;">)</span> tuner <span style="color: #907373;">(</span>pleasant-chord *pitch*<span style="color: #907373;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/midi-chords-play-button&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;start-midi-listener&gt;</span>
+<span style="color: #707183;">(</span>scheme-midi-listener <span style="color: #7388D6;">(</span>*metro* 'get-beat <span style="color: #D0372D;">4</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">1/24</span><span style="color: #707183;">)</span><span style="background-color: #FFDCDC; text-decoration: underline;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/start-midi-listener&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/05-midi-chord-button.xtm&gt;</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="orgc4eab57"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/06-midi-chord-keyboard.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/04-harmony-chord.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude <span style="color: #80A880;">(</span>sine time frequency<span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-note&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here put fx init</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-fx&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;make-tuner&gt;</span>
+<span style="color: #707183;">(</span>make-instrument tuner tuner<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/make-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;tuner-dsp&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/tuner-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/setup-tuner&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-pleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">pleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> pitch <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">4</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-pleasant-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-unpleasant-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">unpleasant-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>pitch<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">list</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">1</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">7</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006699;">+</span> pitch <span style="color: #D0372D;">15</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-unpleasant-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;play-chord&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">play-chord</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>t inst pitches dur<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #709870;">(</span><span style="color: #907373;">(</span>together-time <span style="color: #6276BA;">(</span><span style="color: #006699;">+</span> t <span style="color: #858580;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> <span style="color: #80A880;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #80A880;">)</span> dur<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">for-each</span>
+       <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>i pitch<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note <span style="color: #858580;">(</span><span style="color: #006699;">+</span> t <span style="color: #80A880;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">2</span> i dur<span style="color: #80A880;">)</span><span style="color: #858580;">)</span> inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span>
+         <span style="color: #6276BA;">(</span>play-note together-time inst pitch <span style="color: #D0372D;">100</span> dur<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       <span style="color: #907373;">(</span>range <span style="color: #6276BA;">(</span><span style="color: #006699;">length</span> pitches<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+       pitches<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>play-chord <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> tuner <span style="color: #7388D6;">(</span>pleasant-chord <span style="color: #D0372D;">60</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">(play-chord (now) tuner (unpleasant-chord 60) 22050)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/play-chord&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/04-harmony-chord.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;midi-chords-play-keyboard&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">midi-note-on</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>timestamp pitch volume chan<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>play-chord <span style="color: #709870;">(</span><span style="color: #006699;">now</span><span style="color: #709870;">)</span> tuner <span style="color: #709870;">(</span>pleasant-chord pitch<span style="color: #709870;">)</span> <span style="color: #D0372D;">22050</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/midi-chords-play-keyboard&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;start-midi-listener&gt;</span>
+<span style="color: #707183;">(</span>scheme-midi-listener <span style="color: #7388D6;">(</span>*metro* 'get-beat <span style="color: #D0372D;">4</span><span style="color: #7388D6;">)</span> <span style="color: #D0372D;">1/24</span><span style="color: #707183;">)</span><span style="background-color: #FFDCDC; text-decoration: underline;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/start-midi-listener&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/06-midi-chord-keyboard.xtm&gt;</span>
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org7fdb41a" class="outline-4">
+<h4 id="org7fdb41a"><span class="section-number-4">3.1.3</span> Intermezzo: <code>osc_c</code></h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+I mentioned Extempore's <code>osc_c</code> briefly as an alternative for hand-rolled
+sine wave generator. Now it's time to write down (and hear!) difference
+between the two. <code>osc_c</code> encloses phase, and our <code>sine</code> takes it implicitly
+as a timestamp. But in this case it's not just a question of style (FP-ish
+explicit argument passing vs OOP-y mixing state with code), but a subtle
+difference in behavior. Waves produced by both oscillators are the same when
+frequency stays constant. But <code>sine</code> goes glitchy when frequency changes,
+that's why usually <code>osc_c</code> is the way to go (though sometimes you want to
+produce glitches on purpose).
+</p>
+
+<p>
+To hear the difference let's apply frequency modulation to our <code>tuner</code> and
+make&#x2026; hmmm&#x2026; <code>fm_tuner</code> instrument ;-)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org8f05c1f"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude
+                 <span style="color: #80A880;">(</span>sine time <span style="color: #887070;">(</span><span style="color: #006699;">+</span> frequency
+                               <span style="color: #707183;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">50.0</span>
+                                  <span style="color: #7388D6;">(</span>sine time <span style="color: #909183;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">0.1</span> frequency<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-note&gt;</span>
+</pre>
+</div>
+
+<p>
+And <code>fm_tuner_fx</code> will still do nothing (but don't hesitate to edit it by
+your taste!)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org77041ac"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-fx&gt;</span>
+</pre>
+</div>
+
+<p>
+The moment of truth, our poor-man FM-synth sound:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org9591d98"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/07-fm-tuner-sine.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;define-sine&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-val</span> <span style="color: #006699;">omega</span> <span style="color: #6434A3;">SAMPLE</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">/</span> STWOPI SRf<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">sine</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>time<span style="color: #6434A3;">:i64</span> freq<span style="color: #6434A3;">:SAMPLE</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #006699;">sin</span> <span style="color: #709870;">(</span><span style="color: #006699;">*</span> omega freq <span style="color: #907373;">(</span>convert time<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/define-sine&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span><span style="color: #006699;">*</span> amplitude
+                 <span style="color: #80A880;">(</span>sine time <span style="color: #887070;">(</span><span style="color: #006699;">+</span> frequency
+                               <span style="color: #707183;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">50.0</span>
+                                  <span style="color: #7388D6;">(</span>sine time <span style="color: #909183;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">0.1</span> frequency<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-note&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-fx&gt;</span>
+
+<span style="color: #707183;">(</span>make-instrument fm_tuner fm_tuner<span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>fm_tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+
+<span style="color: #707183;">(</span>play-note <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> fm_tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">90</span> <span style="color: #D0372D;">44100</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/07-fm-tuner-sine.xtm&gt;</span>
+</pre>
+</div>
+
+<p>
+Do you hear? It's not even glitchy, it's just a noise. Let's do the same
+synth using <code>osc_c</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org4f0a303"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note-osc&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>carrier <span style="color: #858580;">(</span>osc_c <span style="color: #D0372D;">0.0</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>modulator <span style="color: #858580;">(</span>osc_c <span style="color: #D0372D;">0.0</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span>carrier amplitude
+                       <span style="color: #80A880;">(</span><span style="color: #006699;">+</span> frequency
+                          <span style="color: #887070;">(</span>modulator <span style="color: #D0372D;">50.0</span> <span style="color: #707183;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">0.1</span> frequency<span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-note-osc&gt;</span>
+</pre>
+</div>
+
+<p>
+And the file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-extempore" id="org60c4bed"><span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;xtm/08-fm-tuner-osc.xtm&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;load-instruments&gt;</span>
+<span style="color: #707183;">(</span>sys<span style="color: #6434A3;">:load</span> <span style="color: #008000;">"libs/core/instruments.xtm"</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/load-instruments&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-note-osc&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_note</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here you can put init of entire instrument</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>data<span style="color: #6434A3;">:NoteData*</span> nargs<span style="color: #6434A3;">:i64</span> dargs<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here init of certain note</span>
+      <span style="color: #709870;">(</span><span style="color: #0000FF;">let</span> <span style="color: #907373;">(</span><span style="color: #6276BA;">(</span>frequency <span style="color: #858580;">(</span>note_frequency data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>amplitude <span style="color: #858580;">(</span>note_amplitude data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>starttime <span style="color: #858580;">(</span>note_starttime data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>duration <span style="color: #858580;">(</span>note_duration data<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>carrier <span style="color: #858580;">(</span>osc_c <span style="color: #D0372D;">0.0</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span>
+            <span style="color: #6276BA;">(</span>modulator <span style="color: #858580;">(</span>osc_c <span style="color: #D0372D;">0.0</span><span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+        <span style="color: #907373;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #6276BA;">(</span>time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span><span style="color: #6276BA;">)</span>
+          <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">here we produce samples for this note</span>
+          <span style="color: #6276BA;">(</span><span style="color: #0000FF;">if</span> <span style="color: #858580;">(</span><span style="color: #006699;">&lt;</span> <span style="color: #80A880;">(</span><span style="color: #006699;">-</span> time starttime<span style="color: #80A880;">)</span> duration<span style="color: #858580;">)</span>
+              <span style="color: #858580;">(</span>carrier amplitude
+                       <span style="color: #80A880;">(</span><span style="color: #006699;">+</span> frequency
+                          <span style="color: #887070;">(</span>modulator <span style="color: #D0372D;">50.0</span> <span style="color: #707183;">(</span><span style="color: #006699;">*</span> <span style="color: #D0372D;">0.1</span> frequency<span style="color: #707183;">)</span><span style="color: #887070;">)</span><span style="color: #80A880;">)</span><span style="color: #858580;">)</span>
+              <span style="color: #D0372D;">0.0</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-note-osc&gt;</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;fm-tuner-fx&gt;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">fm_tuner_fx</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">()</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #709870;">(</span>in<span style="color: #6434A3;">:SAMPLE</span> time<span style="color: #6434A3;">:i64</span> chan<span style="color: #6434A3;">:i64</span> dat<span style="color: #6434A3;">:SAMPLE*</span><span style="color: #709870;">)</span>
+      in<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/fm-tuner-fx&gt;</span>
+
+<span style="color: #707183;">(</span>make-instrument fm_tuner fm_tuner<span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">bind-func</span> <span style="color: #006699;">dsp</span><span style="color: #6434A3;">:DSP</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">(</span>in time chan dat<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>fm_tuner in time chan dat<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;set-dsp&gt;</span>
+<span style="color: #707183;">(</span>dsp<span style="color: #6434A3;">:set!</span> dsp<span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/set-dsp&gt;</span>
+
+<span style="color: #707183;">(</span>play-note <span style="color: #7388D6;">(</span><span style="color: #006699;">now</span><span style="color: #7388D6;">)</span> fm_tuner <span style="color: #D0372D;">60</span> <span style="color: #D0372D;">90</span> <span style="color: #D0372D;">44100</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&lt;/xtm/08-fm-tuner-osc.xtm&gt;</span>
+</pre>
+</div>
+
+<p>
+This one is so nice, isn't it? Viva la <code>osc_c</code> ;-)
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: rprakapchuk</p>
+<p class="date">Created: 2017-03-24 Fri 16:42</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+;; <xtm/08-fm-tuner-osc.xtm>
+;; <load-instruments>
+(sys:load "libs/core/instruments.xtm")
+;; </load-instruments>
+;; <fm-tuner-note-osc>
+(bind-func fm_tuner_note
+  (lambda ()
+    ;; here you can put init of entire instrument
+    (lambda (data:NoteData* nargs:i64 dargs:SAMPLE*)
+      ;; here init of certain note
+      (let ((frequency (note_frequency data))
+            (amplitude (note_amplitude data))
+            (starttime (note_starttime data))
+            (duration (note_duration data))
+            (carrier (osc_c 0.0))
+            (modulator (osc_c 0.0)))
+        (lambda (time:i64 chan:i64)
+          ;; here we produce samples for this note
+          (if (< (- time starttime) duration)
+              (carrier amplitude
+                       (+ frequency
+                          (modulator 50.0 (* 0.1 frequency))))
+              0.0))))))
+;; </fm-tuner-note-osc>
+;; <fm-tuner-fx>
+(bind-func fm_tuner_fx
+  (lambda ()
+    (lambda (in:SAMPLE time:i64 chan:i64 dat:SAMPLE*)
+      in)))
+;; </fm-tuner-fx>
+
+(make-instrument fm_tuner fm_tuner)
+
+(bind-func dsp:DSP
+  (lambda (in time chan dat)
+    (fm_tuner in time chan dat)))
+
+;; <set-dsp>
+(dsp:set! dsp)
+;; </set-dsp>
+
+(play-note (now) fm_tuner 60 90 44100)
+;; </xtm/08-fm-tuner-osc.xtm>

@@ -1,0 +1,8 @@
+;; <xtm/00-sound-silence.xtm>
+(bind-func dsp:DSP
+  (lambda (in time chan dat)
+    0.0))
+;; <set-dsp>
+(dsp:set! dsp)
+;; </set-dsp>
+;; </xtm/00-sound-silence.xtm>

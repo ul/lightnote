@@ -19,12 +19,13 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
 
   1. Copy and paste code to buffer/editor from which you know how to send it to
      Extempore compiler (see [[http://digego.github.io/extempore/index.html][documentation]]). Blocks are enclosed with xml-like
-     comments to help you because GitHub org renderer doesn't do tangling.
-     Eventually HTML exported version would be included in repo for easier
-     following.
+     comments to help you because GitHub org renderer doesn't do tangling. HTML
+     exported version is included in repo for easier following, but it's not
+     guaranteed to be up-to-date.
   2. If you have Emacs installed then run =tangle.sh= to produce xtm files and
      run code from them. Xml-like comments with block names helps here with
-     following too.
+     following too. Generated files are included in this repo either, but they
+     are not guaranteed to be up-to-date.
 
 * The Essential Guide to Music Theory
 
@@ -489,3 +490,126 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
   <<start-midi-listener>>
   ;; </xtm/06-midi-chord-keyboard.xtm>
 #+END_SRC
+
+*** Intermezzo: =osc_c=
+
+    I mentioned Extempore's =osc_c= briefly as an alternative for hand-rolled
+    sine wave generator. Now it's time to write down (and hear!) difference
+    between the two. =osc_c= encloses phase, and our =sine= takes it implicitly
+    as a timestamp. But in this case it's not just a question of style (FP-ish
+    explicit argument passing vs OOP-y mixing state with code), but a subtle
+    difference in behavior. Waves produced by both oscillators are the same when
+    frequency stays constant. But =sine= goes glitchy when frequency changes,
+    that's why usually =osc_c= is the way to go (though sometimes you want to
+    produce glitches on purpose).
+
+    To hear the difference let's apply frequency modulation to our =tuner= and
+    make... hmmm... =fm_tuner= instrument ;-)
+
+#+NAME: fm-tuner-note
+#+BEGIN_SRC extempore
+  ;; <fm-tuner-note>
+  (bind-func fm_tuner_note
+    (lambda ()
+      ;; here you can put init of entire instrument
+      (lambda (data:NoteData* nargs:i64 dargs:SAMPLE*)
+        ;; here init of certain note
+        (let ((frequency (note_frequency data))
+              (amplitude (note_amplitude data))
+              (starttime (note_starttime data))
+              (duration (note_duration data)))
+          (lambda (time:i64 chan:i64)
+            ;; here we produce samples for this note
+            (if (< (- time starttime) duration)
+                (* amplitude
+                   (sine time (+ frequency
+                                 (* 50.0
+                                    (sine time (* 0.1 frequency))))))
+                0.0))))))
+  ;; </fm-tuner-note>
+#+END_SRC
+
+    And =fm_tuner_fx= will still do nothing (but don't hesitate to edit it by
+    your taste!)
+
+#+NAME: fm-tuner-fx
+#+BEGIN_SRC extempore
+  ;; <fm-tuner-fx>
+  (bind-func fm_tuner_fx
+    (lambda ()
+      (lambda (in:SAMPLE time:i64 chan:i64 dat:SAMPLE*)
+        in)))
+  ;; </fm-tuner-fx>
+#+END_SRC
+
+    The moment of truth, our poor-man FM-synth sound:
+
+#+NAME: xtm/07-fm-tuner-sine.xtm
+#+BEGIN_SRC extempore :tangle xtm/07-fm-tuner-sine.xtm :noweb yes :mkdirp yes :paddle no
+  ;; <xtm/07-fm-tuner-sine.xtm>
+  <<load-instruments>>
+  <<define-sine>>
+  <<fm-tuner-note>>
+  <<fm-tuner-fx>>
+
+  (make-instrument fm_tuner fm_tuner)
+
+  (bind-func dsp:DSP
+    (lambda (in time chan dat)
+      (fm_tuner in time chan dat)))
+
+  <<set-dsp>>
+
+  (play-note (now) fm_tuner 60 90 44100)
+  ;; </xtm/07-fm-tuner-sine.xtm>
+#+END_SRC
+
+   Do you hear? It's not even glitchy, it's just a noise. Let's do the same
+   synth using =osc_c=:
+
+#+NAME: fm-tuner-note-osc
+#+BEGIN_SRC extempore
+  ;; <fm-tuner-note-osc>
+  (bind-func fm_tuner_note
+    (lambda ()
+      ;; here you can put init of entire instrument
+      (lambda (data:NoteData* nargs:i64 dargs:SAMPLE*)
+        ;; here init of certain note
+        (let ((frequency (note_frequency data))
+              (amplitude (note_amplitude data))
+              (starttime (note_starttime data))
+              (duration (note_duration data))
+              (carrier (osc_c 0.0))
+              (modulator (osc_c 0.0)))
+          (lambda (time:i64 chan:i64)
+            ;; here we produce samples for this note
+            (if (< (- time starttime) duration)
+                (carrier amplitude
+                         (+ frequency
+                            (modulator 50.0 (* 0.1 frequency))))
+                0.0))))))
+  ;; </fm-tuner-note-osc>
+#+END_SRC
+
+   And the file:
+
+#+NAME: xtm/08-fm-tuner-osc.xtm
+#+BEGIN_SRC extempore :tangle xtm/08-fm-tuner-osc.xtm :noweb yes :mkdirp yes :paddle no
+  ;; <xtm/08-fm-tuner-osc.xtm>
+  <<load-instruments>>
+  <<fm-tuner-note-osc>>
+  <<fm-tuner-fx>>
+
+  (make-instrument fm_tuner fm_tuner)
+
+  (bind-func dsp:DSP
+    (lambda (in time chan dat)
+      (fm_tuner in time chan dat)))
+
+  <<set-dsp>>
+
+  (play-note (now) fm_tuner 60 90 44100)
+  ;; </xtm/08-fm-tuner-osc.xtm>
+#+END_SRC
+
+  This one is so nice, isn't it? Viva la =osc_c= ;-)

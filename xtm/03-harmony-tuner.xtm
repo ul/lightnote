@@ -1,0 +1,51 @@
+;; <xtm/03-harmony-tuner.xtm>
+;; <setup-tuner>
+;; <load-instruments>
+(sys:load "libs/core/instruments.xtm")
+;; </load-instruments>
+;; <define-sine>
+(bind-val omega SAMPLE (/ STWOPI SRf))
+
+(bind-func sine
+  (lambda (time:i64 freq:SAMPLE)
+    (sin (* omega freq (convert time)))))
+;; </define-sine>
+;; <tuner-note>
+(bind-func tuner_note
+  (lambda ()
+    ;; here you can put init of entire instrument
+    (lambda (data:NoteData* nargs:i64 dargs:SAMPLE*)
+      ;; here init of certain note
+      (let ((frequency (note_frequency data))
+            (amplitude (note_amplitude data))
+            (starttime (note_starttime data))
+            (duration (note_duration data)))
+        (lambda (time:i64 chan:i64)
+          ;; here we produce samples for this note
+          (if (< (- time starttime) duration)
+              (* amplitude (sine time frequency))
+              0.0))))))
+;; </tuner-note>
+;; <tuner-fx>
+(bind-func tuner_fx
+  (lambda ()
+    ;; here put fx init
+    (lambda (in:SAMPLE time:i64 chan:i64 dat:SAMPLE*)
+      in)))
+;; </tuner-fx>
+;; <make-tuner>
+(make-instrument tuner tuner)
+;; </make-tuner>
+;; <tuner-dsp>
+(bind-func dsp:DSP
+  (lambda (in time chan dat)
+    (tuner in time chan dat)))
+;; </tuner-dsp>
+;; <set-dsp>
+(dsp:set! dsp)
+;; </set-dsp>
+;; </setup-tuner>
+;; <play-note-now>
+(play-note (now) tuner 60 90 44100)
+;; </play-note-now>
+;; </xtm/03-harmony-tuner.xtm>

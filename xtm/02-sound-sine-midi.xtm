@@ -1,0 +1,30 @@
+;; <xtm/02-sound-sine-midi.xtm>
+;; <load-midi-input>
+(sys:load "libs/external/midi_input.xtm")
+;; </load-midi-input>
+;; <sine-closure-dsp>
+(bind-func dsp:DSP
+  (let ((amplitude 0.5)
+        (frequency 440.0))
+    (lambda (in time chan dat)
+        (* amplitude
+           (sin (* frequency
+                   (/ STWOPI SRf)
+                   (convert time)))))))
+;; </sine-closure-dsp>
+;; <set-dsp>
+(dsp:set! dsp)
+;; </set-dsp>
+;; ;; <set-midi-in>
+;; (set_midi_in 3)
+;; ;; </set-midi-in>
+;; <sine-midi-cc>
+(bind-func midi_cc
+  (lambda (timestamp:i32 controller:i32 value:i32 chan:i32)
+    (println "MIDI CC" controller value)
+    (cond ((= controller 19) (dsp.amplitude:SAMPLE (/ (convert value) 127.)))
+          ((= controller 23) (dsp.frequency:SAMPLE (* (convert value) 10.)))
+          (else 0.0:f))
+    void))
+;; </sine-midi-cc>
+;; </xtm/02-sound-sine-midi.xtm>

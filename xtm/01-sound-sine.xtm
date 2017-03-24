@@ -1,0 +1,13 @@
+;; <xtm/01-sound-sine.xtm>
+(bind-func dsp:DSP
+  (lambda (in time chan dat)
+    (let ((amplitude 0.5)
+          (frequency 440.0))
+      (* amplitude
+         (sin (* frequency
+                 (/ STWOPI SRf)
+                 (convert time)))))))
+;; <set-dsp>
+(dsp:set! dsp)
+;; </set-dsp>
+;; </xtm/01-sound-sine.xtm>
