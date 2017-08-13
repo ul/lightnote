@@ -378,8 +378,6 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
            (play-note together-time inst pitch 100 dur))
          (range (length pitches))
          pitches))))
-  (play-chord (now) tuner (pleasant-chord 60) 22050)
-  ;; (play-chord (now) tuner (unpleasant-chord 60) 22050)
   ;; </play-chord>
 #+END_SRC
 
@@ -392,6 +390,8 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
   <<define-pleasant-chord>>
   <<define-unpleasant-chord>>
   <<play-chord>>
+  (play-chord (now) tuner (pleasant-chord 60) 22050)
+  ;; (play-chord (now) tuner (unpleasant-chord 60) 22050)
   ;; </xtm/04-harmony-chord.xtm>
 #+END_SRC
 
@@ -612,4 +612,120 @@ Learning [[https://github.com/digego/extempore][Extempore]] while following [[ht
   ;; </xtm/08-fm-tuner-osc.xtm>
 #+END_SRC
 
-  This one is so nice, isn't it? Viva la =osc_c= ;-)
+  This one is so nice, isn't it? Viva la =osc_c= ;-) Let's redo our =tuner=
+  instrument with it:
+
+#+NAME: tuner-note-osc
+#+BEGIN_SRC extempore
+  ;; <tuner-note-osc>
+  (bind-func tuner_note
+    (lambda ()
+      ;; here you can put init of entire instrument
+      (lambda (data:NoteData* nargs:i64 dargs:SAMPLE*)
+        ;; here init of certain note
+        (let ((frequency (note_frequency data))
+              (amplitude (note_amplitude data))
+              (starttime (note_starttime data))
+              (duration (note_duration data))
+              (carrier (osc_c 0.0)))
+          (lambda (time:i64 chan:i64)
+            ;; here we produce samples for this note
+            (if (< (- time starttime) duration)
+                (carrier amplitude frequency)
+                0.0))))))
+  ;; </tuner-note-osc>
+#+END_SRC
+
+#+NAME: setup-tuner-osc
+#+BEGIN_SRC extempore
+  ;; <setup-tuner-osc>
+  <<load-instruments>>
+  <<tuner-note-osc>>
+  <<tuner-fx>>
+  <<make-tuner>>
+  <<tuner-dsp>>
+  <<set-dsp>>
+  ;; </setup-tuner-osc>
+#+END_SRC
+
+** Keys & Scales
+
+*** Pentatonic scale
+
+    Five notes with simple ratios forms pentatonic scale. This scale one of the
+    most ancient and it has a nice property "easy to learn, hard to master".
+    Playing in pentatonic scale you would create more or less pleasant melody
+    without any effort, though making anything really impressive require the
+    same amount of work, or even more, as using other scales.
+
+    Let's make up our scale from the ground to get used with it. For musings
+    you'd better use Extempore standard library,  "pitch
+    class and interval sets" module.
+
+    First things first, let's resurrect our simple instrument playing sine wave
+    by using =<<setup-tuner>>= block.
+
+#+BEGIN_SRC extempore
+  ;; <load-pc>
+  (sys:load "libs/core/pc_ivl.xtm")
+  ;; </load-pc>
+#+END_SRC
+
+    As long as start note of the scale could be any, let's make it a parameter
+    for our scale-building function. I'm going to use 0-based indexing because
+    it's easier to align with list indices in Extempore. Our scale would be just
+    a list of frequencies.
+
+#+BEGIN_SRC extempore
+  (define make-pentatonic-scale
+    (lambda (freq0)
+      ;; here is our code
+      ))
+#+END_SRC
+
+    =freq3= relates to =freq0= as =3:2=, =freq2= as =5:4=, =freq4= as =5:3=,
+    =freq1= as =9:8=
+
+#+NAME: make-pentatonic-scale-freq
+#+BEGIN_SRC extempore
+  ;; <make-pentatonic-scale-freq>
+  (define make-pentatonic-scale-freq
+    (lambda (freq0)
+      (map (lambda (x) (* x freq0))
+           '(1 9/8 3/2 5/4 3/2 5/3))))
+  ;; </make-pentatonic-scale-freq>
+#+END_SRC
+
+    If we want to work with MIDI notes, some extra calculations are required:
+
+#+NAME: make-pentatonic-scale
+#+BEGIN_SRC extempore
+  ;; <make-pentatonic-scale>
+  <<make-pentatonic-scale-freq>>
+
+  (define make-pentatonic-scale
+    (lambda (start-note)
+      (map frq2midi (make-pentatonic-scale-freq (midi2frq start-note)))))
+  ;; </make-pentatonic-scale>
+#+END_SRC
+
+    Now let's try to play scale in sequence and in chord:
+
+#+NAME: play-pentatonic-scale
+#+BEGIN_SRC extempore
+  ;; <play-pentatonic-scale>
+  <<play-chord>>
+
+  (play-chord (now) tuner (make-pentatonic-scale 60) *second*)
+  ;; </play-pentatonic-scale>
+#+END_SRC
+
+#+NAME: xtm/09-pentatonic-scale.xtm
+#+BEGIN_SRC extempore :tangle xtm/09-pentatonic-scale.xtm :noweb yes :mkdirp yes :paddle no
+  ;; <xtm/09-pentatonic-scale.xtm>
+  <<setup-tuner-osc>>
+  <<make-pentatonic-scale>>
+  <<play-pentatonic-scale>>
+  ;; <<load-pc>>
+  ;; </xtm/09-pentatonic-scale.xtm>
+#+END_SRC

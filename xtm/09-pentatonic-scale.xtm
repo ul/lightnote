@@ -1,16 +1,10 @@
-;; <xtm/04-harmony-chord.xtm>
-;; <setup-tuner>
+
+;; <xtm/09-pentatonic-scale.xtm>
+;; <setup-tuner-osc>
 ;; <load-instruments>
 (sys:load "libs/core/instruments.xtm")
 ;; </load-instruments>
-;; <define-sine>
-(bind-val omega SAMPLE (/ STWOPI SRf))
-
-(bind-func sine
-  (lambda (time:i64 freq:SAMPLE)
-    (sin (* omega freq (convert time)))))
-;; </define-sine>
-;; <tuner-note>
+;; <tuner-note-osc>
 (bind-func tuner_note
   (lambda ()
     ;; here you can put init of entire instrument
@@ -19,13 +13,14 @@
       (let ((frequency (note_frequency data))
             (amplitude (note_amplitude data))
             (starttime (note_starttime data))
-            (duration (note_duration data)))
+            (duration (note_duration data))
+            (carrier (osc_c 0.0)))
         (lambda (time:i64 chan:i64)
           ;; here we produce samples for this note
           (if (< (- time starttime) duration)
-              (* amplitude (sine time frequency))
+              (carrier amplitude frequency)
               0.0))))))
-;; </tuner-note>
+;; </tuner-note-osc>
 ;; <tuner-fx>
 (bind-func tuner_fx
   (lambda ()
@@ -44,17 +39,20 @@
 ;; <set-dsp>
 (dsp:set! dsp)
 ;; </set-dsp>
-;; </setup-tuner>
-;; <define-pleasant-chord>
-(define pleasant-chord
-  (lambda (pitch)
-    (list pitch (+ pitch 4) (+ pitch 7))))
-;; </define-pleasant-chord>
-;; <define-unpleasant-chord>
-(define unpleasant-chord
-  (lambda (pitch)
-    (list (+ pitch 1) (+ pitch 7) (+ pitch 15))))
-;; </define-unpleasant-chord>
+;; </setup-tuner-osc>
+;; <make-pentatonic-scale>
+;; <make-pentatonic-scale-freq>
+(define make-pentatonic-scale-freq
+  (lambda (freq0)
+    (map (lambda (x) (* x freq0))
+         '(1 9/8 3/2 5/4 3/2 5/3))))
+;; </make-pentatonic-scale-freq>
+
+(define make-pentatonic-scale
+  (lambda (start-note)
+    (map frq2midi (make-pentatonic-scale-freq (midi2frq start-note)))))
+;; </make-pentatonic-scale>
+;; <play-pentatonic-scale>
 ;; <play-chord>
 (define play-chord
   (lambda (t inst pitches dur)
@@ -66,6 +64,8 @@
        (range (length pitches))
        pitches))))
 ;; </play-chord>
-(play-chord (now) tuner (pleasant-chord 60) 22050)
-;; (play-chord (now) tuner (unpleasant-chord 60) 22050)
-;; </xtm/04-harmony-chord.xtm>
+
+(play-chord (now) tuner (make-pentatonic-scale 60) *second*)
+;; </play-pentatonic-scale>
+;; 
+;; </xtm/09-pentatonic-scale.xtm>

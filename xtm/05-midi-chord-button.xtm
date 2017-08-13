@@ -1,3 +1,4 @@
+
 ;; <xtm/05-midi-chord-button.xtm>
 ;; <xtm/04-harmony-chord.xtm>
 ;; <setup-tuner>
@@ -66,9 +67,9 @@
          (play-note together-time inst pitch 100 dur))
        (range (length pitches))
        pitches))))
+;; </play-chord>
 (play-chord (now) tuner (pleasant-chord 60) 22050)
 ;; (play-chord (now) tuner (unpleasant-chord 60) 22050)
-;; </play-chord>
 ;; </xtm/04-harmony-chord.xtm>
 ;; <midi-chords-pitch>
 (define *pitch* 60)
